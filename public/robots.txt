@@ -1,0 +1,8 @@
+# hello my dear crawlers
+
+User-Agent: *
+Allow: /
+Disallow: /.well-known/assetlinks.json
+Disallow: /downloads/thank-you
+
+Sitemap: https://webvium.melvinjonesrepol.com/sitemap.xml
