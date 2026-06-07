@@ -1,3 +1,4 @@
+import extensions, { Extension } from "@/lib/extensions";
 import { Metadata } from "next";
 import Link from "next/link";
 
@@ -61,9 +62,9 @@ export default function Downloads() {
                 customization.
               </p>
 
-              <div className="mt-8 flex gap-4">
+              <div className="mt-8 flex flex-col md:flex-row gap-4">
                 <Link
-                  href="/downloads/thank-you"
+                  href="/downloads/thank-you?utm_source=webvium-browser&utm_medium=browser_download"
                   className="rounded-xl bg-blue-600 text-white px-5 py-3"
                 >
                   Download APK
@@ -91,7 +92,7 @@ export default function Downloads() {
                 Convert websites into installable Android apps.
               </p>
 
-              <div className="mt-8 flex gap-4">
+              <div className="mt-8 flex flex-col md:flex-row gap-4">
                 <Link
                   href="https://github.com/webvium/web-appp"
                   target="_blank"
@@ -116,11 +117,18 @@ export default function Downloads() {
               A modern Android launcher currently under active development.
             </p>
 
-            <div className="mt-8 flex gap-4">
+            <div className="mt-8 flex flex-col md:flex-row gap-4">
+              <Link
+                href="/downloads/thank-you?utm_source=webvium-launcher&utm_medium=launcher_download"
+                className="rounded-xl bg-blue-600 text-white px-5 py-3"
+              >
+                Pre-release APK
+              </Link>
+
               <Link
                 href="https://github.com/webvium/webvium-launcher"
                 target="_blank"
-                className="rounded-xl bg-blue-600 text-white px-5 py-3"
+                className="rounded-xl border border-zinc-700 px-5 py-3"
               >
                 View on GitHub
               </Link>
@@ -134,22 +142,67 @@ export default function Downloads() {
           <h2 className="text-4xl font-bold">Browser Extensions</h2>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              "Disable Control Shift C",
-              "Floating Console",
-              "Browser Storage Inspector",
-              "Webvium Ad Blocker",
-              "Awesome New Tab",
-            ].map((extension) => (
+            {extensions.map((extension: Extension, index: number) => (
               <div
-                key={extension}
-                className="rounded-3xl border border-zinc-800 p-6"
+                key={index}
+                className="group rounded-3xl border border-zinc-800 p-6"
               >
-                <h3 className="font-semibold">{extension}</h3>
+                <h3 className="font-semibold">{extension.name}</h3>
 
-                <p className="mt-3 text-sm text-zinc-500">Coming Soon</p>
+                <p className="my-3 text-sm">{extension.description}</p>
+
+                {extension.github_url && (
+                  <Link
+                    href={extension.github_url}
+                    className="text-sm text-zinc-500 hover:text-zinc-400 group-hover:text-zinc-400"
+                  >
+                    {extension.github_url}
+                  </Link>
+                )}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-zinc-800 py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="text-4xl font-bold">Deprecated</h2>
+
+          <div className="mt-12 rounded-3xl border border-zinc-800 p-8">
+            <h3 className="text-2xl font-bold">Webvium VPN</h3>
+
+            <p className="mt-4 text-zinc-400">
+              Inspired from Webvium, Webvium VPN is a lightweight android VPN
+              app focuses in speed, simplicity, security and privacy.
+            </p>
+
+            <div className="mt-8 flex flex-col md:flex-row gap-4">
+              <Link
+                href="/downloads/thank-you?utm_source=webvium-vpn&utm_medium=vpn_download"
+                className="rounded-xl bg-red-600 text-white px-5 py-3"
+              >
+                Deprecated APK
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-12 rounded-3xl border border-zinc-800 p-8">
+            <h3 className="text-2xl font-bold">Webvium Search</h3>
+
+            <p className="mt-4 text-zinc-400">
+              The default search homepage for Webvium.
+            </p>
+
+            <div className="mt-8 flex flex-col md:flex-row gap-4">
+              <Link
+                href="https://github.com/mrepol742/mrepol742.github.io/tree/master/search"
+                className="rounded-xl bg-red-600 text-white px-5 py-3"
+                target="_blank"
+              >
+                View on GitHub
+              </Link>
+            </div>
           </div>
         </div>
       </section>

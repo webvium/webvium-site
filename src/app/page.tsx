@@ -49,7 +49,7 @@ export default function Home() {
             The Webvium Ecosystem
           </span>
 
-          <h1 className="mt-8 text-6xl font-bold md:text-8xl">
+          <h1 className="mt-8 text-5xl font-bold md:text-8xl">
             Lightweight
             <br />
             Software

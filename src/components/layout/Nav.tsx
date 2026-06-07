@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   faChevronDown,
+  faDownload,
   faMoon,
   faSun,
 } from "@fortawesome/free-solid-svg-icons";
@@ -29,7 +30,7 @@ export default function Nav() {
             className="rounded-xl"
           />
 
-          <span className="text-xl font-bold">Webvium</span>
+          <span className="text-xl font-bold hidden md:block">Webvium</span>
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">
@@ -137,9 +138,13 @@ export default function Nav() {
             )}
           </div>
 
-          <Link href="/downloads" className="hover:text-[#4285f4]">Downloads</Link>
+          <Link href="/downloads" className="hover:text-[#4285f4]">
+            Downloads
+          </Link>
 
-          <Link href="/about" className="hover:text-[#4285f4]">About</Link>
+          <Link href="/about" className="hover:text-[#4285f4]">
+            About
+          </Link>
         </div>
         <div className="flex items-center gap-3">
           <button
@@ -153,7 +158,10 @@ export default function Nav() {
             href="/downloads"
             className="rounded-xl bg-blue-600 px-5 py-2.5 font-medium text-white hover:bg-blue-700"
           >
-            Download
+            <span className="hidden md:block">Download</span>
+            <div className="md:hidden">
+              <FontAwesomeIcon icon={faDownload} />
+            </div>
           </Link>
         </div>
       </nav>

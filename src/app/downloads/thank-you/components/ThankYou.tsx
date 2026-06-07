@@ -5,8 +5,11 @@ import Link from "next/link";
 
 export default function ThankYou() {
   useEffect(() => {
-    window.location.href =
-      "https://released.melvinjonesrepol.com/android/webvium-browser.apk";
+    const params = new URLSearchParams(window.location.search);
+
+    const appName = params.get("utm_source") || "webvium-browser";
+
+    window.location.href = `https://released.melvinjonesrepol.com/android/${appName}.apk`;
   }, []);
 
   return (
@@ -29,7 +32,7 @@ export default function ThankYou() {
               />
             </svg>
           </div>
-          <h1 className="mt-10 text-6xl font-bold">
+          <h1 className="mt-10 text-5xl font-bold">
             Thank You For
             <br />
             Downloading
