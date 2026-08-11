@@ -62,7 +62,7 @@ export default function ThankYou() {
       <section className="border-t border-zinc-800 py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-8 lg:grid-cols-3">
-            <div className="rounded-3xl border border-zinc-800 p-8">
+            <div className="rounded-2xl border border-zinc-800 p-8">
               <h3 className="text-xl font-semibold">Installation</h3>
 
               <p className="mt-4 text-zinc-400">
@@ -71,7 +71,7 @@ export default function ThankYou() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-zinc-800 p-8">
+            <div className="rounded-2xl border border-zinc-800 p-8">
               <h3 className="text-xl font-semibold">Changelog</h3>
 
               <p className="mt-4 text-zinc-400">
@@ -87,7 +87,7 @@ export default function ThankYou() {
               </Link>
             </div>
 
-            <div className="rounded-3xl border border-zinc-800 p-8">
+            <div className="rounded-2xl border border-zinc-800 p-8">
               <h3 className="text-xl font-semibold">Community</h3>
 
               <p className="mt-4 text-zinc-400">

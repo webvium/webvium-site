@@ -45,10 +45,6 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(37,99,235,.25),transparent_50%)]" />
 
         <div className="relative mx-auto max-w-7xl px-6 text-center">
-          <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-400">
-            The Webvium Ecosystem
-          </span>
-
           <h1 className="mt-8 text-5xl font-bold md:text-8xl">
             Lightweight
             <br />
@@ -122,28 +118,28 @@ export default function Home() {
           </div>
 
           <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-3xl border border-zinc-800 p-8">
+            <div className="rounded-2xl border border-zinc-800 p-8">
               <h3 className="text-xl font-semibold">Performance</h3>
               <p className="mt-3 text-zinc-400">
                 Lightweight architecture designed for speed.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-zinc-800 p-8">
+            <div className="rounded-2xl border border-zinc-800 p-8">
               <h3 className="text-xl font-semibold">Privacy</h3>
               <p className="mt-3 text-zinc-400">
                 User control and privacy-first browsing.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-zinc-800 p-8">
+            <div className="rounded-2xl border border-zinc-800 p-8">
               <h3 className="text-xl font-semibold">Customization</h3>
               <p className="mt-3 text-zinc-400">
                 Personalize the browser to your workflow.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-zinc-800 p-8">
+            <div className="rounded-2xl border border-zinc-800 p-8">
               <h3 className="text-xl font-semibold">Native Tools</h3>
               <p className="mt-3 text-zinc-400">
                 Many features are built directly into the browser.
@@ -164,7 +160,7 @@ export default function Home() {
             {projects.map((project) => (
               <div
                 key={project.name}
-                className="rounded-3xl border border-zinc-800 p-8"
+                className="rounded-2xl border border-zinc-800 p-8"
               >
                 <div className="flex items-center justify-between">
                   <h3 className="text-2xl font-bold">{project.name}</h3>
@@ -195,7 +191,7 @@ export default function Home() {
             {extensions.map((extension) => (
               <div
                 key={extension}
-                className="rounded-3xl border border-zinc-800 p-6"
+                className="rounded-2xl border border-zinc-800 p-6"
               >
                 <h3 className="text-xl font-semibold">{extension}</h3>
 

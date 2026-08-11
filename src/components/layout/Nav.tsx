@@ -30,7 +30,7 @@ export default function Nav() {
             className="rounded-xl"
           />
 
-          <span className="text-xl font-bold hidden md:block">Webvium</span>
+          <span className="text-xl font-bold hidden md:block text-blue-500">Webvium</span>
         </Link>
 
         <div className="hidden lg:flex items-center gap-8">

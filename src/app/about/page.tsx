@@ -80,7 +80,7 @@ export default function About() {
           </h2>
 
           <div className="mt-16 grid gap-8 md:grid-cols-3">
-            <div className="rounded-3xl border border-zinc-800 p-8">
+            <div className="rounded-2xl border border-zinc-800 p-8">
               <h3 className="text-xl font-semibold">Lightweight First</h3>
 
               <p className="mt-4 text-zinc-400">
@@ -88,7 +88,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-zinc-800 p-8">
+            <div className="rounded-2xl border border-zinc-800 p-8">
               <h3 className="text-xl font-semibold">Built-In Functionality</h3>
 
               <p className="mt-4 text-zinc-400">
@@ -97,7 +97,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-zinc-800 p-8">
+            <div className="rounded-2xl border border-zinc-800 p-8">
               <h3 className="text-xl font-semibold">Independent Development</h3>
 
               <p className="mt-4 text-zinc-400">

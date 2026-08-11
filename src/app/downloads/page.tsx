@@ -48,7 +48,7 @@ export default function Downloads() {
           <h2 className="text-4xl font-bold">Available Downloads</h2>
 
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
-            <div className="rounded-3xl border border-zinc-800 p-8">
+            <div className="rounded-2xl border border-zinc-800 p-8">
               <div className="flex items-center justify-between">
                 <h3 className="text-2xl font-bold">Webvium Browser</h3>
 
@@ -79,7 +79,7 @@ export default function Downloads() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-zinc-800 p-8">
+            <div className="rounded-2xl border border-zinc-800 p-8">
               <div className="flex items-center justify-between">
                 <h3 className="text-2xl font-bold">Web App</h3>
 
@@ -110,7 +110,7 @@ export default function Downloads() {
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-4xl font-bold">Coming Soon</h2>
 
-          <div className="mt-12 rounded-3xl border border-zinc-800 p-8">
+          <div className="mt-12 rounded-2xl border border-zinc-800 p-8">
             <h3 className="text-2xl font-bold">Webvium Launcher</h3>
 
             <p className="mt-4 text-zinc-400">
@@ -145,7 +145,7 @@ export default function Downloads() {
             {extensions.map((extension: Extension, index: number) => (
               <div
                 key={index}
-                className="group rounded-3xl border border-zinc-800 p-6"
+                className="group rounded-2xl border border-zinc-800 p-6"
               >
                 <h3 className="font-semibold">{extension.name}</h3>
 
@@ -169,7 +169,7 @@ export default function Downloads() {
         <div className="mx-auto max-w-6xl px-6">
           <h2 className="text-4xl font-bold">Deprecated</h2>
 
-          <div className="mt-12 rounded-3xl border border-zinc-800 p-8">
+          <div className="mt-12 rounded-2xl border border-zinc-800 p-8">
             <h3 className="text-2xl font-bold">Webvium VPN</h3>
 
             <p className="mt-4 text-zinc-400">
@@ -187,7 +187,7 @@ export default function Downloads() {
             </div>
           </div>
 
-          <div className="mt-12 rounded-3xl border border-zinc-800 p-8">
+          <div className="mt-12 rounded-2xl border border-zinc-800 p-8">
             <h3 className="text-2xl font-bold">Webvium Search</h3>
 
             <p className="mt-4 text-zinc-400">
