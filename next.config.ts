@@ -8,7 +8,13 @@ const ContentSecurityPolicy = `
   script-src
     'self'
     'unsafe-inline'
-    'unsafe-eval';
+    'unsafe-eval'
+    https://ep2.adtrafficquality.google
+    https://fundingchoicesmessages.google.com
+    https://www.googletagmanager.com
+    https://www.google-analytics.com
+    https://pagead2.googlesyndication.com
+    https://googleads.g.doubleclick.net;
 
   style-src
     'self'
@@ -19,7 +25,9 @@ const ContentSecurityPolicy = `
     'self'
     data:
     blob:
-    https:;
+    https:
+    https://www.google-analytics.com
+    https://*.g.doubleclick.net;
 
   font-src
     'self'
@@ -27,10 +35,23 @@ const ContentSecurityPolicy = `
     https://fonts.gstatic.com;
 
   connect-src
-    'self';
+    'self'
+    https://ep1.adtrafficquality.google
+    https://pagead2.googlesyndication.com
+    https://analytics.google.com
+    https://www.google.com
+    https://www.google.com.ph
+    https://www.google-analytics.com
+    https://region1.google-analytics.com
+    https://stats.g.doubleclick.net;
 
   frame-src
-    'self';
+    'self'
+    https://ep2.adtrafficquality.google
+    https://www.google.com
+    https://www.google.com.ph
+    https://td.doubleclick.net
+    https://googleads.g.doubleclick.net;
 
   worker-src 'self' blob:;
   child-src 'self' blob:;
