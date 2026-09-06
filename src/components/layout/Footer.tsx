@@ -4,7 +4,9 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
 import Link from "next/link";
+import CookiePreference from "../common/CookiePreference";
 
 const columns = [
   {
@@ -95,6 +97,7 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col gap-2 border-t border-border pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026 Webvium. All rights reserved.</span>
+          <CookiePreference />
           <span>
             Built and designed by{" "}
             <Link

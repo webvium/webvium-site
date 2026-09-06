@@ -7,6 +7,10 @@ import NextTopLoader from "nextjs-toploader";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import ServiceWorkerRegister from "@/components/common/ServiceWorkerRegister";
+import { ConsentProvider } from "@/context/consent";
+import GoogleAdsense from "@/components/common/metadata/GoogleAdsense";
+import GoogleAnalytics from "@/components/common/metadata/GoogleAnalytics";
+import CookieBanner from "@/components/common/PrivacyPolicyPrompt";
 
 config.autoAddCss = false;
 
@@ -124,21 +128,26 @@ export default function RootLayout({
             __html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})()`,
           }}
         />
+        <GoogleAdsense />
       </head>
       <body className="antialiased min-h-screen flex flex-col bg-background text-foreground">
-        <Nav />
+        <ConsentProvider>
+          <Nav />
+          <CookieBanner />
 
-        <NextTopLoader showSpinner={false} color="#1a73e8" />
+          <NextTopLoader showSpinner={false} color="#1a73e8" />
 
-        <main className="flex-1">{children}</main>
+          <main className="flex-1">{children}</main>
 
-        <Footer />
+          <Footer />
 
-        {isProduction && (
-          <>
-            <ServiceWorkerRegister />
-          </>
-        )}
+          {isProduction && (
+            <>
+              <GoogleAnalytics />
+              <ServiceWorkerRegister />
+            </>
+          )}
+        </ConsentProvider>
       </body>
     </html>
   );
