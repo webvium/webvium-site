@@ -74,12 +74,17 @@ const resources = [
 ];
 
 const gallery = [
-  "https://www.webvium.com/images/webvium-1.jpg",
-  "https://www.webvium.com/images/webvium-2.jpg",
-  "https://www.webvium.com/images/webvium-3.jpg",
-  "https://www.webvium.com/images/webvium-4.jpg",
-  "https://www.webvium.com/images/webvium-5.jpg",
-  "https://www.webvium.com/images/webvium-6.jpg",
+  "/images/webvium-1.jpg",
+  "/images/webvium-2.jpg",
+  "/images/webvium-3.jpg",
+  "/images/webvium-4.jpg",
+  "/images/webvium-5.jpg",
+  "/images/webvium-6.jpg",
+  "/images/webvium-7.jpg",
+  "/images/webvium-8.jpg",
+  "/images/webvium-9.jpg",
+  "/images/webvium-10.jpg",
+  "/images/webvium-11.jpg",
 ];
 
 const requirements = [
@@ -271,6 +276,9 @@ export default function WebviumBrowser() {
               </Reveal>
             ))}
           </div>
+          <span className="mt-10 text-sm text-muted">
+            Images may not be up to date.
+          </span>
         </div>
       </section>
 

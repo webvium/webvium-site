@@ -322,6 +322,7 @@ export default function Home() {
                 key={extension.name}
                 href={extension.github_url ?? "/"}
                 className="card flex h-full w-72 flex-col p-6"
+                style={{ boxShadow: "none" }}
               >
                 <h3 className="text-lg font-semibold">{extension.name}</h3>
                 <p className="mt-3 line-clamp-4 text-sm text-muted">
