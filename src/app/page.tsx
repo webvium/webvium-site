@@ -1,256 +1,475 @@
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faDownload,
+  faArrowRight,
+  faBolt,
+  faShieldHalved,
+  faSliders,
+  faCubes,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebook,
+  faGithub,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import Reveal from "@/components/common/Reveal";
+import Accordion from "@/components/ui/Accordion";
+import Marquee from "@/components/ui/Marquee";
+import extensions from "@/lib/extensions";
+
+const projects = [
+  {
+    name: "Webvium Browser",
+    description:
+      "The flagship Android browser focused on speed, privacy and customization.",
+    status: "Active",
+    href: "/browser",
+  },
+  {
+    name: "Web App",
+    description: "Convert any website into a lightweight Android application.",
+    status: "Active",
+    href: "/downloads",
+  },
+  {
+    name: "Webvium Launcher",
+    description: "A modern, minimal Android launcher currently in development.",
+    status: "In development",
+    href: "/",
+  },
+  {
+    name: "Webvium VPN",
+    description: "An early experiment in private networking, now archived.",
+    status: "Archived",
+    href: "/",
+  },
+  {
+    name: "Webvium Search",
+    description:
+      "A search prototype exploring a cleaner results page, now archived.",
+    status: "Archived",
+    href: "/",
+  },
+];
+
+const features = [
+  {
+    icon: faBolt,
+    title: "Fast",
+    description:
+      "A lightweight core that installs in seconds and loads instantly.",
+  },
+  {
+    icon: faShieldHalved,
+    title: "Private",
+    description:
+      "Tracking protection and data controls that stay out of your way.",
+  },
+  {
+    icon: faSliders,
+    title: "Customizable",
+    description:
+      "Themes, layout and behavior you can shape around your habits.",
+  },
+  {
+    icon: faCubes,
+    title: "Integrated",
+    description:
+      "Common tools are built into the browser, not bolted on later.",
+  },
+];
+
+const timeline = [
+  {
+    year: "2018",
+    text: "The project starts as WebView, a browser built to learn Android.",
+  },
+  {
+    year: "2019",
+    text: "Rewritten and rebranded to Webvium, with a clear goal: light and fast.",
+  },
+  { year: "2023", text: "Web App launches for website to app conversion." },
+  { year: "2025", text: "The browser extension ecosystem is announced." },
+  { year: "2026", text: "Webvium Launcher is announced." },
+  {
+    year: "2026",
+    text: "Webvium acquires www.webvium.com after its previous owner failed to renew it.",
+  },
+];
+
+const principles = [
+  {
+    title: "Small by default",
+    description:
+      "Every feature is weighed against the cost it adds. If it does not earn its size, it does not ship.",
+  },
+  {
+    title: "No accounts, no tracking",
+    description:
+      "Webvium works the moment you open it. There is nothing to sign up for and no activity to collect.",
+  },
+  {
+    title: "Built in the open",
+    description:
+      "The extensions and several tools are public on GitHub, so you can read exactly what runs on your device.",
+  },
+  {
+    title: "One person, long term",
+    description:
+      "Webvium is developed independently, at a steady pace, without pressure to chase trends or investors.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Is Webvium free?",
+    answer:
+      "Yes. Webvium Browser, Web App, and the extensions are all free to download and use.",
+  },
+  {
+    question: "What platforms are supported?",
+    answer:
+      "Webvium Browser and Web App are Android apps. The extensions target Chromium based desktop browsers such as Chrome, Edge, and Brave.",
+  },
+  {
+    question: "Does Webvium collect my data?",
+    answer:
+      "No. Webvium does not track, collect, or share your browsing activity. There is no account and no analytics built into the browser.",
+  },
+  {
+    question: "Is Webvium open source?",
+    answer:
+      "The browser extensions and several supporting projects are open source on GitHub. Webvium Browser itself is developed independently and distributed as an APK.",
+  },
+  {
+    question: "How often is it updated?",
+    answer:
+      "Updates ship at a steady, deliberate pace. The focus is on stability and keeping the app small rather than a constant stream of features.",
+  },
+  {
+    question: "Where do I get support?",
+    answer:
+      "Open an issue on GitHub or reach out through the Webvium pages on Facebook and YouTube.",
+  },
+];
+
+const community = [
+  {
+    label: "GitHub",
+    description: "Source code, issues, and releases.",
+    href: "https://github.com/webvium",
+    icon: faGithub,
+  },
+  {
+    label: "YouTube",
+    description: "Walkthroughs and release notes.",
+    href: "https://youtube.com/@webvium",
+    icon: faYoutube,
+  },
+  {
+    label: "Facebook",
+    description: "Announcements and discussion.",
+    href: "https://facebook.com/com.mrepol742.webvium",
+    icon: faFacebook,
+  },
+];
+
+const section = "flex min-h-screen flex-col justify-center px-5 py-24";
+const sectionAlt = `${section} bg-surface`;
+const inner = "mx-auto w-full max-w-6xl";
+const eyebrow =
+  "flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary before:h-px before:w-8 before:bg-primary";
 
 export default function Home() {
-  const projects = [
-    {
-      name: "Webvium Browser",
-      description:
-        "The flagship Android browser focused on speed, privacy and customization.",
-      status: "Active",
-    },
-    {
-      name: "Web App",
-      description: "Convert websites into lightweight Android applications.",
-      status: "Active",
-    },
-    {
-      name: "Webvium Launcher",
-      description: "A modern Android launcher currently under development.",
-      status: "Coming Soon",
-    },
-    {
-      name: "Webvium VPN",
-      description: "Archived project.",
-      status: "Deprecated",
-    },
-    {
-      name: "Webvium Search",
-      description: "Archived project.",
-      status: "Deprecated",
-    },
-  ];
-
-  const extensions = [
-    "Disable Control Shift C",
-    "Floating Console",
-    "Browser Storage Inspector",
-    "Webvium Ad Blocker",
-    "Awesome New Tab",
-  ];
-
   return (
-    <div className="min-h-screen">
-      <section className="relative overflow-hidden py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(37,99,235,.25),transparent_50%)]" />
+    <div>
+      <section className={`${section} relative overflow-hidden`}>
+        <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
+        <div className="relative mx-auto w-full max-w-3xl text-center">
+          <Reveal className="flex justify-center">
+            <span className={eyebrow}>Independent software</span>
+          </Reveal>
 
-        <div className="relative mx-auto max-w-7xl px-6 text-center">
-          <h1 className="mt-8 text-5xl font-bold md:text-8xl">
-            Lightweight
-            <br />
-            Software
-            <br />
-            Built For Speed
-          </h1>
+          <Reveal
+            as="h1"
+            delay={80}
+            className="mt-6 text-4xl font-semibold leading-tight sm:text-6xl"
+          >
+            Lightweight software built for speed
+          </Reveal>
 
-          <p className="mx-auto mt-8 max-w-3xl text-xl text-zinc-400">
-            From Android browsers and website-to-app conversion tools to browser
-            extensions and future web technologies, Webvium is an ecosystem
-            focused on performance, privacy, and simplicity.
-          </p>
+          <Reveal
+            as="p"
+            delay={160}
+            className="mx-auto mt-6 max-w-xl text-base text-muted sm:text-lg"
+          >
+            Webvium is a small ecosystem of Android and web tools built around
+            performance, privacy and simplicity.
+          </Reveal>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <a
+          <Reveal
+            delay={240}
+            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          >
+            <Link
               href="/downloads"
-              className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-4 hover:bg-blue-700 text-white"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto"
             >
               <FontAwesomeIcon icon={faDownload} />
-              Download Now
-            </a>
+              Download now
+            </Link>
 
-            <a
-              href="#products"
-              className="flex items-center gap-2 rounded-xl border border-zinc-700 px-6 py-4 hover:border-zinc-500"
+            <Link
+              href="#ecosystem"
+              className="flex w-full items-center justify-center gap-2 rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface-2 sm:w-auto"
             >
-              Explore Products
+              Explore the ecosystem
               <FontAwesomeIcon icon={faArrowRight} />
-            </a>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="features" className={sectionAlt}>
+        <div className={inner}>
+          <Reveal>
+            <span className={eyebrow}>Features</span>
+          </Reveal>
+          <Reveal
+            as="h2"
+            delay={60}
+            className="mt-5 text-3xl font-semibold sm:text-4xl"
+          >
+            Built into the browser
+          </Reveal>
+          <Reveal as="p" delay={120} className="mt-3 max-w-md text-muted">
+            The essentials, integrated directly into Webvium.
+          </Reveal>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {features.map((feature, i) => (
+              <Reveal key={feature.title} delay={i * 80} className="card p-6">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-soft text-primary">
+                  <FontAwesomeIcon icon={feature.icon} />
+                </span>
+                <h3 className="mt-4 text-lg font-semibold">{feature.title}</h3>
+                <p className="mt-2 text-sm text-muted">{feature.description}</p>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Stats */}
+      <section id="ecosystem" className={section}>
+        <div className={inner}>
+          <Reveal>
+            <span className={eyebrow}>Ecosystem</span>
+          </Reveal>
+          <Reveal
+            as="h2"
+            delay={60}
+            className="mt-5 text-3xl font-semibold sm:text-4xl"
+          >
+            The Webvium ecosystem
+          </Reveal>
+          <Reveal as="p" delay={120} className="mt-3 max-w-md text-muted">
+            A handful of focused projects, past and present.
+          </Reveal>
 
-      <section className="border-y border-zinc-800 py-12">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 text-center md:grid-cols-4">
-          <div>
-            <h3 className="text-4xl font-bold">8+</h3>
-            <p className="text-zinc-400">Years Development</p>
-          </div>
-
-          <div>
-            <h3 className="text-4xl font-bold">100%</h3>
-            <p className="text-zinc-400">Independent</p>
-          </div>
-
-          <div>
-            <h3 className="text-4xl font-bold">5</h3>
-            <p className="text-zinc-400">Projects</p>
-          </div>
-
-          <div>
-            <h3 className="text-4xl font-bold">∞</h3>
-            <p className="text-zinc-400">Ideas</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Browser Features */}
-
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="text-center">
-            <h2 className="text-5xl font-bold">Built Into The Browser</h2>
-
-            <p className="mt-4 text-zinc-400">
-              Powerful tools integrated directly into Webvium.
-            </p>
-          </div>
-
-          <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-2xl border border-zinc-800 p-8">
-              <h3 className="text-xl font-semibold">Performance</h3>
-              <p className="mt-3 text-zinc-400">
-                Lightweight architecture designed for speed.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-zinc-800 p-8">
-              <h3 className="text-xl font-semibold">Privacy</h3>
-              <p className="mt-3 text-zinc-400">
-                User control and privacy-first browsing.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-zinc-800 p-8">
-              <h3 className="text-xl font-semibold">Customization</h3>
-              <p className="mt-3 text-zinc-400">
-                Personalize the browser to your workflow.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-zinc-800 p-8">
-              <h3 className="text-xl font-semibold">Native Tools</h3>
-              <p className="mt-3 text-zinc-400">
-                Many features are built directly into the browser.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Ecosystem */}
-      <section className="border-t border-zinc-800 py-24" id="products">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-center text-5xl font-bold">
-            The Webvium Ecosystem
-          </h2>
-
-          <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <div
-                key={project.name}
-                className="rounded-2xl border border-zinc-800 p-8"
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="text-2xl font-bold">{project.name}</h3>
-
-                  <span className="text-sm text-zinc-400">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project, i) => (
+              <Reveal key={project.name} delay={i * 70}>
+                <Link
+                  href={project.href}
+                  className="card group flex h-full flex-col p-6 transition-transform hover:-translate-y-1"
+                >
+                  <h3 className="text-lg font-semibold">{project.name}</h3>
+                  <p className="mt-2 flex-1 text-sm text-muted">
+                    {project.description}
+                  </p>
+                  <span className="mt-4 text-xs font-medium uppercase tracking-wide text-muted">
                     {project.status}
                   </span>
-                </div>
-
-                <p className="mt-4 text-zinc-400">{project.description}</p>
-              </div>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Extensions */}
-
-      <section className="border-t border-zinc-800 py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-center text-5xl font-bold">Browser Extensions</h2>
-
-          <p className="mt-4 text-center text-zinc-400">
-            Upcoming utilities for desktop browsers.
-          </p>
-
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {extensions.map((extension) => (
-              <div
-                key={extension}
-                className="rounded-2xl border border-zinc-800 p-6"
-              >
-                <h3 className="text-xl font-semibold">{extension}</h3>
-
-                <p className="mt-3 text-zinc-400">Coming Soon</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-
-      <section className="border-t border-zinc-800 py-24">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-center text-5xl font-bold">
-            Development Journey
-          </h2>
-
-          <div className="mt-16 space-y-8">
-            <div className="flex gap-6">
-              <div className="font-bold text-blue-400">2018</div>
-              <div>Webvium Browser development begins.</div>
-            </div>
-
-            <div className="flex gap-6">
-              <div className="font-bold text-blue-400">2023</div>
-              <div>Web App launches.</div>
-            </div>
-
-            <div className="flex gap-6">
-              <div className="font-bold text-blue-400">2025</div>
-              <div>Extension ecosystem announced.</div>
-            </div>
-
-            <div className="flex gap-6">
-              <div className="font-bold text-blue-400">2026</div>
-              <div>Webvium Launcher announced.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-
-      <section className="py-32">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-5xl font-bold">Start Browsing With Webvium</h2>
-
-          <p className="mt-6 text-xl text-zinc-400">
-            Download the latest version and experience a lightweight Android
-            browser designed for speed.
-          </p>
-
-          <a
-            href="/downloads"
-            className="mt-10 inline-flex rounded-xl bg-blue-600 text-white px-8 py-4"
+      <section id="extensions" className={sectionAlt}>
+        <div className={inner}>
+          <Reveal>
+            <span className={eyebrow}>Extensions</span>
+          </Reveal>
+          <Reveal
+            as="h2"
+            delay={60}
+            className="mt-5 text-3xl font-semibold sm:text-4xl"
           >
-            Download Now
-          </a>
+            Browser extensions
+          </Reveal>
+          <Reveal as="p" delay={120} className="mt-3 max-w-md text-muted">
+            Small utilities for desktop browsers, built in the open.
+          </Reveal>
+        </div>
+
+        <Reveal delay={160} className="mt-12">
+          <Marquee
+            items={extensions.map((extension) => (
+              <Link
+                key={extension.name}
+                href={extension.github_url ?? "/"}
+                className="card flex h-full w-72 flex-col p-6"
+              >
+                <h3 className="text-lg font-semibold">{extension.name}</h3>
+                <p className="mt-3 line-clamp-4 text-sm text-muted">
+                  {extension.description}
+                </p>
+              </Link>
+            ))}
+          />
+        </Reveal>
+      </section>
+
+      <section id="journey" className={section}>
+        <div className="mx-auto w-full max-w-2xl">
+          <Reveal>
+            <span className={eyebrow}>Timeline</span>
+          </Reveal>
+          <Reveal
+            as="h2"
+            delay={60}
+            className="mt-5 text-3xl font-semibold sm:text-4xl"
+          >
+            Development journey
+          </Reveal>
+
+          <div className="mt-12 flex flex-col">
+            {timeline.map((item, i) => (
+              <Reveal
+                key={item.text}
+                delay={i * 80}
+                className="flex gap-5 border-l border-border pb-8 pl-5 last:pb-0"
+              >
+                <span className="font-semibold text-primary">{item.year}</span>
+                <span className="text-muted">{item.text}</span>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="principles" className={sectionAlt}>
+        <div className={inner}>
+          <Reveal>
+            <span className={eyebrow}>Approach</span>
+          </Reveal>
+          <Reveal
+            as="h2"
+            delay={60}
+            className="mt-5 text-3xl font-semibold sm:text-4xl"
+          >
+            Why lightweight matters
+          </Reveal>
+          <Reveal as="p" delay={120} className="mt-3 max-w-md text-muted">
+            A smaller app starts faster, uses less memory and battery, and gives
+            you less to worry about.
+          </Reveal>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2">
+            {principles.map((principle, i) => (
+              <Reveal
+                key={principle.title}
+                delay={(i % 2) * 80}
+                className="card p-6"
+              >
+                <h3 className="text-lg font-semibold">{principle.title}</h3>
+                <p className="mt-2 text-sm text-muted">
+                  {principle.description}
+                </p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className={section}>
+        <div className="mx-auto w-full max-w-2xl">
+          <Reveal>
+            <span className={eyebrow}>Questions</span>
+          </Reveal>
+          <Reveal
+            as="h2"
+            delay={60}
+            className="mt-5 text-3xl font-semibold sm:text-4xl"
+          >
+            Frequently asked questions
+          </Reveal>
+          <Reveal delay={120} className="mt-12">
+            <Accordion items={faqs} />
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="follow" className={sectionAlt}>
+        <div className={inner}>
+          <Reveal>
+            <span className={eyebrow}>Community</span>
+          </Reveal>
+          <Reveal
+            as="h2"
+            delay={60}
+            className="mt-5 text-3xl font-semibold sm:text-4xl"
+          >
+            Follow the project
+          </Reveal>
+          <Reveal as="p" delay={120} className="mt-3 max-w-md text-muted">
+            Webvium is built in public. These are the best places to keep up.
+          </Reveal>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-3">
+            {community.map((item, i) => (
+              <Reveal key={item.label} delay={i * 80}>
+                <Link
+                  href={item.href}
+                  className="card flex h-full flex-col p-6 transition-transform hover:-translate-y-1"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-soft text-primary">
+                    <FontAwesomeIcon icon={item.icon} />
+                  </span>
+                  <h3 className="mt-4 text-lg font-semibold">{item.label}</h3>
+                  <p className="mt-2 text-sm text-muted">{item.description}</p>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={`${section} relative overflow-hidden`}>
+        <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
+        <div className="relative mx-auto w-full max-w-2xl text-center">
+          <Reveal as="h2" className="text-3xl font-semibold sm:text-5xl">
+            Start browsing with Webvium
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={80}
+            className="mx-auto mt-5 max-w-md text-muted"
+          >
+            Download the latest release and see how light a browser can feel.
+          </Reveal>
+          <Reveal delay={160} className="mt-10">
+            <Link
+              href="/downloads"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95"
+            >
+              <FontAwesomeIcon icon={faDownload} />
+              Download now
+            </Link>
+          </Reveal>
         </div>
       </section>
     </div>

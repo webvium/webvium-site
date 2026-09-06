@@ -1,25 +1,91 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
+    --background: #f7f8fa;
+    --surface: #ffffff;
+    --surface-2: #eef0f4;
+    --foreground: #1b1d21;
+    --muted: #5b616e;
+    --border: #e4e7ec;
+    --primary: #1a73e8;
+    --primary-soft: rgba(26, 115, 232, 0.1);
+    --primary-contrast: #ffffff;
+    --dot: rgba(27, 29, 33, 0.06);
+    --shadow:
+        0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.04);
 }
 
 .dark {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #101216;
+    --surface: #171a1f;
+    --surface-2: #1e222a;
+    --foreground: #e7e9ee;
+    --muted: #969ca9;
+    --border: #262b34;
+    --primary: #8ab4f8;
+    --primary-soft: rgba(138, 180, 248, 0.12);
+    --primary-contrast: #101216;
+    --dot: rgba(255, 255, 255, 0.05);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-surface: var(--surface);
+    --color-surface-2: var(--surface-2);
+    --color-foreground: var(--foreground);
+    --color-muted: var(--muted);
+    --color-border: var(--border);
+    --color-primary: var(--primary);
+    --color-primary-soft: var(--primary-soft);
+    --color-primary-contrast: var(--primary-contrast);
+
+    --font-heading: var(--font-heading);
+    --font-body: var(--font-body);
+
+    --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    --animate-fade-in: fade-in 0.7s ease both;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 ::selection {
-    background-color: #4285f4;
-    color: #ededed;
+    background-color: var(--primary);
+    color: var(--primary-contrast);
 }
 
-::-moz-selection {
-    background: #4285f4;
-    color: #ededed;
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -27,29 +93,16 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #e5e5e5;
+    background: var(--border);
     border-radius: 999px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #e5e5e5;
-}
-
-::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-}
-
-/* Firefox */
 * {
     scrollbar-width: thin;
-    scrollbar-color: #4285f4 transparent;
+    scrollbar-color: var(--border) transparent;
 }
 
 html {
-    transition:
-        background-color 0.3s ease,
-        color 0.3s ease;
     scroll-behavior: smooth;
 }
 
@@ -57,7 +110,9 @@ body {
     background: var(--background);
     color: var(--foreground);
     font-family: var(--font-body);
-    transition: all 0.3s ease;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 h1,
@@ -67,5 +122,68 @@ h4,
 h5,
 h6 {
     font-family: var(--font-heading);
-    letter-spacing: -0.05em;
+    letter-spacing: -0.03em;
+}
+
+@utility card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+@utility dot-grid {
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size: 22px 22px;
+}
+
+@utility marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+}
+
+.marquee-mask {
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 12%,
+        #000 88%,
+        transparent
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 12%,
+        #000 88%,
+        transparent
+    );
+}
+
+.marquee-mask:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.reveal {
+    opacity: 0;
+}
+
+.reveal.is-visible {
+    animation: var(--animate-fade-up);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal,
+    .reveal.is-visible {
+        opacity: 1;
+        animation: none;
+    }
+
+    .marquee-track {
+        animation: none;
+    }
 }

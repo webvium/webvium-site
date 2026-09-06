@@ -2,140 +2,99 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faDownload } from "@fortawesome/free-solid-svg-icons";
+import Reveal from "@/components/common/Reveal";
+
+const cards = [
+  {
+    title: "Installation",
+    description:
+      "Open the downloaded APK and follow the installation prompts on your Android device.",
+  },
+  {
+    title: "Changelog",
+    description:
+      "View the latest improvements, fixes, and new features included in this release.",
+    link: { label: "View changelog", href: "/changelog" },
+  },
+  {
+    title: "Community",
+    description: "Follow development updates and future releases.",
+    link: { label: "Join community", href: "https://www.hallofcodes.org" },
+  },
+];
 
 export default function ThankYou() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-
     const appName = params.get("utm_source") || "webvium-browser";
-
     window.location.href = `https://released.melvinjonesrepol.com/android/${appName}.apk`;
   }, []);
 
   return (
-    <main className="min-h-screen">
-      <section className="py-32">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-green-500/10">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-12 text-green-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </div>
-          <h1 className="mt-10 text-5xl font-bold">
-            Thank You For
-            <br />
-            Downloading
-          </h1>
-          <p className="mx-auto mt-8 max-w-2xl text-xl text-zinc-400">
-            Your download should begin automatically. If it doesn't, you can
-            start it again using the button below.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+    <div>
+      <section className="flex min-h-screen flex-col justify-center px-5 py-24">
+        <div className="mx-auto w-full max-w-2xl text-center">
+          <Reveal className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary-soft text-primary">
+            <FontAwesomeIcon icon={faCheck} className="text-xl" />
+          </Reveal>
+          <Reveal
+            as="h1"
+            delay={80}
+            className="mt-8 text-4xl font-semibold sm:text-5xl"
+          >
+            Thank you for downloading
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={160}
+            className="mx-auto mt-5 max-w-md text-muted"
+          >
+            Your download should begin automatically. If it does not, start it
+            again with the button below.
+          </Reveal>
+          <Reveal
+            delay={240}
+            className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          >
             <Link
               href="https://released.melvinjonesrepol.com/android/webvium-browser.apk"
-              className="rounded-xl bg-blue-600 px-6 py-4 text-white hover:bg-blue-700"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto"
             >
-              Download Again
+              <FontAwesomeIcon icon={faDownload} />
+              Download again
             </Link>
-
             <Link
               href="/browser"
-              className="rounded-xl border border-zinc-700 px-6 py-4 hover:border-zinc-500"
+              className="flex w-full items-center justify-center rounded-full border border-border px-6 py-3 font-medium transition-colors hover:bg-surface sm:w-auto"
             >
-              Learn More
+              Learn more
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="border-t border-zinc-800 py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid gap-8 lg:grid-cols-3">
-            <div className="rounded-2xl border border-zinc-800 p-8">
-              <h3 className="text-xl font-semibold">Installation</h3>
-
-              <p className="mt-4 text-zinc-400">
-                Open the downloaded APK and follow the installation prompts on
-                your Android device.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-zinc-800 p-8">
-              <h3 className="text-xl font-semibold">Changelog</h3>
-
-              <p className="mt-4 text-zinc-400">
-                View the latest improvements, fixes, and new features included
-                in this release.
-              </p>
-
-              <Link
-                href="/changelog"
-                className="mt-6 inline-flex text-blue-400"
-              >
-                View Changelog →
-              </Link>
-            </div>
-
-            <div className="rounded-2xl border border-zinc-800 p-8">
-              <h3 className="text-xl font-semibold">Community</h3>
-
-              <p className="mt-4 text-zinc-400">
-                Follow development updates and future releases.
-              </p>
-
-              <Link
-                target="_blank"
-                href="https://www.hallofcodes.org"
-                className="mt-6 inline-flex text-blue-400"
-              >
-                Join Community →
-              </Link>
-            </div>
+      <section className="flex min-h-screen flex-col justify-center bg-surface px-5 py-24">
+        <div className="mx-auto w-full max-w-5xl">
+          <div className="grid gap-4 sm:grid-cols-3">
+            {cards.map((card, i) => (
+              <Reveal key={card.title} delay={i * 80} className="card p-6">
+                <h3 className="text-lg font-semibold">{card.title}</h3>
+                <p className="mt-2 text-sm text-muted">{card.description}</p>
+                {card.link && (
+                  <Link
+                    href={card.link.href}
+                    className="mt-4 inline-flex text-sm text-primary transition-opacity hover:opacity-80"
+                  >
+                    {card.link.label}
+                  </Link>
+                )}
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
-
-      <section className="border-t border-zinc-800 py-24">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="rounded-[2rem] border border-zinc-800 p-12 text-center">
-            <h2 className="text-4xl font-bold">
-              Explore The Webvium Ecosystem
-            </h2>
-
-            <p className="mx-auto mt-6 max-w-2xl text-zinc-400">
-              Discover other projects built with the same focus on performance,
-              simplicity, and user control.
-            </p>
-
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link
-                href="/projects"
-                className="rounded-xl border border-zinc-700 px-5 py-3"
-              >
-                View Projects
-              </Link>
-
-              <Link
-                href="/about"
-                className="rounded-xl border border-zinc-700 px-5 py-3"
-              >
-                About Webvium
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+    </div>
   );
 }

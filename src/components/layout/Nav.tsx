@@ -2,169 +2,115 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  faChevronDown,
   faDownload,
   faMoon,
   faSun,
+  faBars,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTheme } from "@/hooks/theme";
-import MenuLink from "../ui/MegaLink";
-import MegaMenu from "../ui/MegaMenu";
+
+const links = [
+  { label: "Browser", href: "/browser" },
+  { label: "Extensions", href: "/#extensions" },
+  { label: "Downloads", href: "/downloads" },
+  { label: "About", href: "/about" },
+];
 
 export default function Nav() {
-  const [menu, setMenu] = useState<string | null>(null);
   const { theme, toggleTheme } = useTheme();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-800/50 bg-background/80 backdrop-blur-xl">
-      <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center gap-3">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+        <Link
+          href="/"
+          className="flex items-center gap-2.5"
+          onClick={() => setOpen(false)}
+        >
           <Image
             src="/images/transparent_webvium.png"
             alt="Webvium"
-            width={40}
-            height={40}
-            className="rounded-xl"
+            width={32}
+            height={32}
           />
-
-          <span className="text-xl font-bold hidden md:block text-blue-500">Webvium</span>
+          <span className="text-lg font-semibold tracking-tight">Webvium</span>
         </Link>
 
-        <div className="hidden lg:flex items-center gap-8">
-          <div
-            className="relative"
-            onMouseEnter={() => setMenu("products")}
-            onMouseLeave={() => setMenu(null)}
-          >
-            <button className="flex items-center gap-2">
-              Products
-              <FontAwesomeIcon icon={faChevronDown} />
-            </button>
-
-            {menu === "products" && (
-              <MegaMenu>
-                <div>
-                  <h4 className="font-semibold">Core Products</h4>
-
-                  <MenuLink
-                    title="Webvium Browser"
-                    description="Fast and lightweight Android browser"
-                    href="/browser"
-                  />
-
-                  <MenuLink
-                    title="Web App"
-                    description="Convert websites into Android apps"
-                    href="/web-app"
-                  />
-                </div>
-
-                <div>
-                  <h4 className="font-semibold">Future Projects</h4>
-
-                  <MenuLink
-                    title="Webvium Launcher"
-                    description="Modern Android launcher"
-                    href="/launcher"
-                  />
-
-                  <MenuLink
-                    title="Webvium VPN"
-                    description="Deprecated"
-                    href="/vpn"
-                  />
-
-                  <MenuLink
-                    title="Webvium Search"
-                    description="Deprecated"
-                    href="/search"
-                  />
-                </div>
-              </MegaMenu>
-            )}
-          </div>
-
-          <div
-            className="relative"
-            onMouseEnter={() => setMenu("extensions")}
-            onMouseLeave={() => setMenu(null)}
-          >
-            <button className="flex items-center gap-2">
-              Extensions
-              <FontAwesomeIcon icon={faChevronDown} />
-            </button>
-
-            {menu === "extensions" && (
-              <MegaMenu>
-                <div>
-                  <h4 className="font-semibold">Browser Extensions</h4>
-
-                  <MenuLink
-                    title="Disable Control Shift C"
-                    description="Developer protection utility"
-                    href="/extensions"
-                  />
-
-                  <MenuLink
-                    title="Floating Console"
-                    description="Floating developer console"
-                    href="/extensions"
-                  />
-
-                  <MenuLink
-                    title="Browser Storage Inspector"
-                    description="Inspect browser storage"
-                    href="/extensions"
-                  />
-                </div>
-
-                <div>
-                  <MenuLink
-                    title="Webvium Ad Blocker"
-                    description="Ad blocking extension"
-                    href="/extensions"
-                  />
-
-                  <MenuLink
-                    title="Awesome New Tab"
-                    description="Customizable new tab page"
-                    href="/extensions"
-                  />
-                </div>
-              </MegaMenu>
-            )}
-          </div>
-
-          <Link href="/downloads" className="hover:text-[#4285f4]">
-            Downloads
-          </Link>
-
-          <Link href="/about" className="hover:text-[#4285f4]">
-            About
-          </Link>
+        <div className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm text-muted transition-colors hover:text-foreground"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
-        <div className="flex items-center gap-3">
+
+        <div className="flex items-center gap-2">
           <button
             onClick={toggleTheme}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-700 hover:border-zinc-500"
+            aria-label="Toggle theme"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:bg-surface hover:text-foreground"
           >
             <FontAwesomeIcon icon={theme === "dark" ? faSun : faMoon} />
           </button>
 
           <Link
             href="/downloads"
-            className="rounded-xl bg-blue-600 px-5 py-2.5 font-medium text-white hover:bg-blue-700"
+            className="hidden items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95 md:flex"
           >
-            <span className="hidden md:block">Download</span>
-            <div className="md:hidden">
-              <FontAwesomeIcon icon={faDownload} />
-            </div>
+            <FontAwesomeIcon icon={faDownload} />
+            Download
           </Link>
+
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Menu"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:bg-surface hover:text-foreground md:hidden"
+          >
+            <FontAwesomeIcon icon={open ? faXmark : faBars} />
+          </button>
         </div>
       </nav>
+
+      {open && (
+        <div className="animate-fade-in border-t border-border bg-background px-5 py-4 md:hidden">
+          <div className="flex flex-col gap-1">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="rounded-lg px-3 py-3 text-base text-foreground transition-colors hover:bg-surface"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link
+              href="/downloads"
+              onClick={() => setOpen(false)}
+              className="mt-2 flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-medium text-primary-contrast"
+            >
+              <FontAwesomeIcon icon={faDownload} />
+              Download
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

@@ -6,97 +6,104 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
+const columns = [
+  {
+    title: "Products",
+    links: [
+      { label: "Webvium Browser", href: "/browser" },
+      { label: "Web App", href: "/downloads" },
+      { label: "Extensions", href: "/#extensions" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { label: "Changelog", href: "/changelog" },
+      {
+        label: "Privacy Policy",
+        href: "https://www.melvinjonesrepol.com/legal/privacy-policy",
+      },
+      {
+        label: "Terms of Service",
+        href: "https://www.melvinjonesrepol.com/legal/terms-of-service",
+      },
+      {
+        label: "Cookie Policy",
+        href: "https://www.melvinjonesrepol.com/legal/cookie-policy",
+      },
+    ],
+  },
+];
+
+const social = [
+  { label: "GitHub", href: "https://github.com/webvium", icon: faGithub },
+  {
+    label: "Facebook",
+    href: "https://facebook.com/com.mrepol742.webvium",
+    icon: faFacebook,
+  },
+  { label: "YouTube", href: "https://youtube.com/@webvium", icon: faYoutube },
+];
+
 export default function Footer() {
   return (
-    <footer id="community" className="border-t border-zinc-800">
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-10 md:grid-cols-4">
+    <footer id="community" className="border-t border-border bg-surface-2">
+      <div className="mx-auto max-w-6xl px-5 py-16">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <h3 className="text-2xl font-bold">Webvium</h3>
-
-            <p className="mt-4">
+            <h3 className="text-lg font-semibold">Webvium</h3>
+            <p className="mt-3 max-w-xs text-sm text-muted">
               Lightweight software built for speed, privacy and simplicity.
             </p>
           </div>
 
-          <div>
-            <h4 className="font-semibold">Products</h4>
-
-            <ul className="mt-4 space-y-2">
-              <li>Webvium Browser</li>
-              <li>Web-App</li>
-              <li>Extensions</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold">Resources</h4>
-
-            <ul className="mt-4 space-y-2">
-              <li>
-                <Link
-                  href="/changelog"
-                  className="inline-flex items-center gap-2 hover:text-[#4285f4]"
-                >
-                  Changelog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://www.webvium.com/legal/privacy-policy"
-                  className="inline-flex items-center gap-2 hover:text-[#4285f4]"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://www.webvium.com/legal/terms-of-service"
-                  className="inline-flex items-center gap-2 hover:text-[#4285f4]"
-                >
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {columns.map((column) => (
+            <div key={column.title}>
+              <h4 className="text-sm font-semibold">{column.title}</h4>
+              <ul className="mt-4 space-y-2.5">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-muted transition-colors hover:text-foreground"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           <div>
-            <h4 className="font-semibold">Follow Us</h4>
-
-            <ul className="mt-4 space-y-2">
-              <li>
-                <Link
-                  href="https://github.com/webvium"
-                  className="inline-flex items-center gap-2 hover:text-[#4285f4]"
-                >
-                  <FontAwesomeIcon icon={faGithub} />
-                  GitHub
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://facebook.com/com.mrepol742.webvium"
-                  className="inline-flex items-center gap-2 hover:text-[#4285f4]"
-                >
-                  <FontAwesomeIcon icon={faFacebook} />
-                  Facebook
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://youtube.com/@webvium"
-                  className="inline-flex items-center gap-2 hover:text-[#4285f4]"
-                >
-                  <FontAwesomeIcon icon={faYoutube} />
-                  Youtube
-                </Link>
-              </li>
+            <h4 className="text-sm font-semibold">Follow</h4>
+            <ul className="mt-4 space-y-2.5">
+              {social.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="inline-flex items-center gap-2.5 text-sm text-muted transition-colors hover:text-foreground"
+                  >
+                    <FontAwesomeIcon icon={item.icon} />
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-zinc-800 pt-6 text-center text-zinc-500">
-          © 2026 Melvin Jones Repol. All rights reserved.
+        <div className="mt-14 flex flex-col gap-2 border-t border-border pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+          <span>© 2026 Webvium. All rights reserved.</span>
+          <span>
+            Built and designed by{" "}
+            <Link
+              href="https://www.melvinjonesrepol.com"
+              className="text-foreground transition-opacity hover:opacity-80"
+            >
+              melvinjonesrepol.com
+            </Link>
+          </span>
         </div>
       </div>
     </footer>

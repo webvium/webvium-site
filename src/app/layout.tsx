@@ -115,16 +115,22 @@ export default function RootLayout({
       className={`${sourceCodePro.variable} ${mavenPro.variable}`}
       data-scroll-behavior="smooth"
       lang="en"
+      suppressHydrationWarning
     >
       <head>
         <meta name="hostname" content="www.webvium.com" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}})()`,
+          }}
+        />
       </head>
-      <body className="antialiased min-h-full flex flex-col">
+      <body className="antialiased min-h-screen flex flex-col bg-background text-foreground">
         <Nav />
 
-        <NextTopLoader showSpinner={false} color="#7873f5" />
+        <NextTopLoader showSpinner={false} color="#1a73e8" />
 
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
 
         <Footer />
 

@@ -1,6 +1,7 @@
 import extensions, { Extension } from "@/lib/extensions";
 import { Metadata } from "next";
 import Link from "next/link";
+import Reveal from "@/components/common/Reveal";
 
 export const metadata: Metadata = {
   title: "Downloads | Webvium",
@@ -28,184 +29,214 @@ export const metadata: Metadata = {
   },
 };
 
+interface Download {
+  name: string;
+  status: "Active" | "Coming soon" | "Deprecated";
+  description: string;
+  actions: { label: string; href: string; primary?: boolean }[];
+}
+
+const downloads: Download[] = [
+  {
+    name: "Webvium Browser",
+    status: "Active",
+    description:
+      "Lightweight Android browser focused on performance and customization.",
+    actions: [
+      {
+        label: "Download APK",
+        href: "/downloads/thank-you?utm_source=webvium-browser&utm_medium=browser_download",
+        primary: true,
+      },
+      { label: "Learn more", href: "/browser" },
+    ],
+  },
+  {
+    name: "Web App",
+    status: "Active",
+    description: "Convert websites into installable Android apps.",
+    actions: [
+      {
+        label: "Fork on GitHub",
+        href: "https://github.com/webvium/web-appp",
+        primary: true,
+      },
+    ],
+  },
+  {
+    name: "Webvium Launcher",
+    status: "Coming soon",
+    description:
+      "A modern Android launcher currently under active development.",
+    actions: [
+      {
+        label: "Pre-release APK",
+        href: "/downloads/thank-you?utm_source=webvium-launcher&utm_medium=launcher_download",
+        primary: true,
+      },
+      {
+        label: "View on GitHub",
+        href: "https://github.com/webvium/webvium-launcher",
+      },
+    ],
+  },
+  {
+    name: "Webvium VPN",
+    status: "Deprecated",
+    description:
+      "A lightweight Android VPN app focused on speed, simplicity, security and privacy.",
+    actions: [
+      {
+        label: "Deprecated APK",
+        href: "/downloads/thank-you?utm_source=webvium-vpn&utm_medium=vpn_download",
+      },
+    ],
+  },
+  {
+    name: "Webvium Search",
+    status: "Deprecated",
+    description: "The default search homepage for Webvium.",
+    actions: [
+      {
+        label: "View on GitHub",
+        href: "https://github.com/mrepol742/mrepol742.github.io/tree/master/search",
+      },
+    ],
+  },
+];
+
+const section = "flex min-h-screen flex-col justify-center px-5 py-24";
+const sectionAlt = `${section} bg-surface`;
+const innerClass = "mx-auto w-full max-w-5xl";
+const eyebrow =
+  "flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary before:h-px before:w-8 before:bg-primary";
+
 export default function Downloads() {
   return (
-    <main className="min-h-screen">
-      <section className="py-32">
-        <div className="mx-auto max-w-6xl px-6 text-center">
-          <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-400">
-            Downloads
-          </span>
-          <h1 className="mt-8 text-6xl font-bold md:text-7xl">Get Webvium</h1>
-          <p className="mx-auto mt-8 max-w-3xl text-xl text-zinc-400">
-            Download the latest Webvium software and projects.
-          </p>
+    <div>
+      <section className={`${section} relative overflow-hidden`}>
+        <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
+        <div className="relative mx-auto w-full max-w-3xl text-center">
+          <Reveal className="flex justify-center">
+            <span className={eyebrow}>Downloads</span>
+          </Reveal>
+          <Reveal
+            as="h1"
+            delay={80}
+            className="mt-6 text-4xl font-semibold leading-tight sm:text-6xl"
+          >
+            Get Webvium
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={160}
+            className="mx-auto mt-6 max-w-md text-base text-muted sm:text-lg"
+          >
+            The latest Webvium software and projects, in one place.
+          </Reveal>
         </div>
       </section>
 
-      <section className="border-t border-zinc-800 py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-4xl font-bold">Available Downloads</h2>
-
-          <div className="mt-12 grid gap-8 lg:grid-cols-2">
-            <div className="rounded-2xl border border-zinc-800 p-8">
-              <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-bold">Webvium Browser</h3>
-
-                <span className="rounded-full bg-green-500/10 px-3 py-1 text-sm text-green-400">
-                  Active
+      <section className={sectionAlt}>
+        <div className={innerClass}>
+          <Reveal>
+            <span className={eyebrow}>Apps</span>
+          </Reveal>
+          <Reveal
+            as="h2"
+            delay={60}
+            className="mt-5 text-3xl font-semibold sm:text-4xl"
+          >
+            Available downloads
+          </Reveal>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2">
+            {downloads.map((item, i) => (
+              <Reveal
+                key={item.name}
+                delay={(i % 2) * 80}
+                className="card flex flex-col p-6"
+              >
+                <span className="text-xs font-medium uppercase tracking-wide text-muted">
+                  {item.status}
                 </span>
-              </div>
-
-              <p className="mt-4 text-zinc-400">
-                Lightweight Android browser focused on performance and
-                customization.
-              </p>
-
-              <div className="mt-8 flex flex-col md:flex-row gap-4">
-                <Link
-                  href="/downloads/thank-you?utm_source=webvium-browser&utm_medium=browser_download"
-                  className="rounded-xl bg-blue-600 text-white px-5 py-3"
-                >
-                  Download APK
-                </Link>
-
-                <Link
-                  href="/browser"
-                  className="rounded-xl border border-zinc-700 px-5 py-3"
-                >
-                  Learn More
-                </Link>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-zinc-800 p-8">
-              <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-bold">Web App</h3>
-
-                <span className="rounded-full bg-green-500/10 px-3 py-1 text-sm text-green-400">
-                  Active
-                </span>
-              </div>
-
-              <p className="mt-4 text-zinc-400">
-                Convert websites into installable Android apps.
-              </p>
-
-              <div className="mt-8 flex flex-col md:flex-row gap-4">
-                <Link
-                  href="https://github.com/webvium/web-appp"
-                  target="_blank"
-                  className="rounded-xl bg-blue-600 text-white px-5 py-3"
-                >
-                  Fork on GitHub
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-zinc-800 py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-4xl font-bold">Coming Soon</h2>
-
-          <div className="mt-12 rounded-2xl border border-zinc-800 p-8">
-            <h3 className="text-2xl font-bold">Webvium Launcher</h3>
-
-            <p className="mt-4 text-zinc-400">
-              A modern Android launcher currently under active development.
-            </p>
-
-            <div className="mt-8 flex flex-col md:flex-row gap-4">
-              <Link
-                href="/downloads/thank-you?utm_source=webvium-launcher&utm_medium=launcher_download"
-                className="rounded-xl bg-blue-600 text-white px-5 py-3"
-              >
-                Pre-release APK
-              </Link>
-
-              <Link
-                href="https://github.com/webvium/webvium-launcher"
-                target="_blank"
-                className="rounded-xl border border-zinc-700 px-5 py-3"
-              >
-                View on GitHub
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-zinc-800 py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-4xl font-bold">Browser Extensions</h2>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {extensions.map((extension: Extension, index: number) => (
-              <div
-                key={index}
-                className="group rounded-2xl border border-zinc-800 p-6"
-              >
-                <h3 className="font-semibold">{extension.name}</h3>
-
-                <p className="my-3 text-sm">{extension.description}</p>
-
-                {extension.github_url && (
-                  <Link
-                    href={extension.github_url}
-                    className="text-sm text-zinc-500 hover:text-zinc-400 group-hover:text-zinc-400"
-                  >
-                    {extension.github_url}
-                  </Link>
-                )}
-              </div>
+                <h3 className="mt-2 text-lg font-semibold">{item.name}</h3>
+                <p className="mt-2 flex-1 text-sm text-muted">
+                  {item.description}
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {item.actions.map((action) => (
+                    <Link
+                      key={action.label}
+                      href={action.href}
+                      className={
+                        action.primary
+                          ? "rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95"
+                          : "rounded-full border border-border px-4 py-2 text-sm font-medium transition-colors hover:bg-surface-2"
+                      }
+                    >
+                      {action.label}
+                    </Link>
+                  ))}
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-t border-zinc-800 py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <h2 className="text-4xl font-bold">Deprecated</h2>
-
-          <div className="mt-12 rounded-2xl border border-zinc-800 p-8">
-            <h3 className="text-2xl font-bold">Webvium VPN</h3>
-
-            <p className="mt-4 text-zinc-400">
-              Inspired from Webvium, Webvium VPN is a lightweight android VPN
-              app focuses in speed, simplicity, security and privacy.
-            </p>
-
-            <div className="mt-8 flex flex-col md:flex-row gap-4">
-              <Link
-                href="/downloads/thank-you?utm_source=webvium-vpn&utm_medium=vpn_download"
-                className="rounded-xl bg-red-600 text-white px-5 py-3"
+      <section className={section}>
+        <div className={innerClass}>
+          <Reveal>
+            <span className={eyebrow}>Extensions</span>
+          </Reveal>
+          <Reveal
+            as="h2"
+            delay={60}
+            className="mt-5 text-3xl font-semibold sm:text-4xl"
+          >
+            Browser extensions
+          </Reveal>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {extensions.map((extension: Extension, i: number) => (
+              <Reveal
+                key={extension.name}
+                delay={i * 70}
+                className="card flex flex-col p-6"
               >
-                Deprecated APK
-              </Link>
-            </div>
-          </div>
-
-          <div className="mt-12 rounded-2xl border border-zinc-800 p-8">
-            <h3 className="text-2xl font-bold">Webvium Search</h3>
-
-            <p className="mt-4 text-zinc-400">
-              The default search homepage for Webvium.
-            </p>
-
-            <div className="mt-8 flex flex-col md:flex-row gap-4">
-              <Link
-                href="https://github.com/mrepol742/mrepol742.github.io/tree/master/search"
-                className="rounded-xl bg-red-600 text-white px-5 py-3"
-                target="_blank"
-              >
-                View on GitHub
-              </Link>
-            </div>
+                <h3 className="text-lg font-semibold">{extension.name}</h3>
+                <p className="mt-3 flex-1 text-sm text-muted">
+                  {extension.description}
+                </p>
+                {extension.github_url && (
+                  <Link
+                    href={extension.github_url}
+                    className="mt-4 text-sm text-primary transition-opacity hover:opacity-80"
+                  >
+                    View on GitHub
+                  </Link>
+                )}
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
-    </main>
+
+      <section className={`${sectionAlt} relative overflow-hidden`}>
+        <div className="dot-grid pointer-events-none absolute inset-0 opacity-70" />
+        <div className="relative mx-auto w-full max-w-2xl text-center">
+          <Reveal as="h2" className="text-3xl font-semibold sm:text-5xl">
+            Built for speed
+          </Reveal>
+          <Reveal
+            as="p"
+            delay={80}
+            className="mx-auto mt-5 max-w-md text-muted"
+          >
+            Every Webvium project shares the same focus on performance,
+            simplicity, and user control.
+          </Reveal>
+        </div>
+      </section>
+    </div>
   );
 }
