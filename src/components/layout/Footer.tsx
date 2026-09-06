@@ -43,7 +43,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://www.melvinjonesrepol.com/legal/privacy-policy"
+                  href="https://www.webvium.com/legal/privacy-policy"
                   className="inline-flex items-center gap-2 hover:text-[#4285f4]"
                 >
                   Privacy Policy
@@ -51,7 +51,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://www.melvinjonesrepol.com/legal/terms-of-service"
+                  href="https://www.webvium.com/legal/terms-of-service"
                   className="inline-flex items-center gap-2 hover:text-[#4285f4]"
                 >
                   Terms of Service

@@ -67,17 +67,17 @@ export default function WebviumBrowser() {
   ];
 
   const gallery = [
-    "https://www.melvinjonesrepol.com/images/webvium-1.jpg",
-    "https://www.melvinjonesrepol.com/images/webvium-2.jpg",
-    "https://www.melvinjonesrepol.com/images/webvium-3.jpg",
-    "https://www.melvinjonesrepol.com/images/webvium-4.jpg",
-    "https://www.melvinjonesrepol.com/images/webvium-5.jpg",
-    "https://www.melvinjonesrepol.com/images/webvium-6.jpg",
-    "https://www.melvinjonesrepol.com/images/webvium-7.jpg",
-    "https://www.melvinjonesrepol.com/images/webvium-8.jpg",
-    "https://www.melvinjonesrepol.com/images/webvium-9.jpg",
-    "https://www.melvinjonesrepol.com/images/webvium-10.jpg",
-    "https://www.melvinjonesrepol.com/images/webvium-11.jpg",
+    "https://www.webvium.com/images/webvium-1.jpg",
+    "https://www.webvium.com/images/webvium-2.jpg",
+    "https://www.webvium.com/images/webvium-3.jpg",
+    "https://www.webvium.com/images/webvium-4.jpg",
+    "https://www.webvium.com/images/webvium-5.jpg",
+    "https://www.webvium.com/images/webvium-6.jpg",
+    "https://www.webvium.com/images/webvium-7.jpg",
+    "https://www.webvium.com/images/webvium-8.jpg",
+    "https://www.webvium.com/images/webvium-9.jpg",
+    "https://www.webvium.com/images/webvium-10.jpg",
+    "https://www.webvium.com/images/webvium-11.jpg",
   ];
 
   return (

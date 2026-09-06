@@ -27,7 +27,7 @@ const mavenPro = Maven_Pro({
 export const revalidate = 43200; // 12 hours (in seconds)
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://webvium.melvinjonesrepol.com"),
+  metadataBase: new URL("https://www.webvium.com"),
   title: "Webvium - Lightweight Software Built for Speed",
   description:
     "Webvium is an independent software ecosystem focused on performance, simplicity, and user control. Explore Webvium Browser, Web App, browser extensions, and upcoming projects.",
@@ -49,13 +49,13 @@ export const metadata: Metadata = {
   authors: [
     {
       name: "Melvin Jones Repol",
-      url: "https://www.melvinjonesrepol.com",
+      url: "https://www.webvium.com",
     },
   ],
   alternates: {
-    canonical: "https://webvium.melvinjonesrepol.com",
+    canonical: "https://www.webvium.com",
     types: {
-      "application/xml": "https://webvium.melvinjonesrepol.com/sitemap.xml",
+      "application/xml": "https://www.webvium.com/sitemap.xml",
     },
   },
   creator: "Melvin Jones Repol",
@@ -63,11 +63,11 @@ export const metadata: Metadata = {
     title: "Webvium - Lightweight Software Built for Speed",
     description:
       "Discover Webvium Browser, Web App, browser extensions, and upcoming projects. Lightweight software focused on performance, privacy, and simplicity.",
-    url: "https://webvium.melvinjonesrepol.com",
+    url: "https://www.webvium.com",
     siteName: "Webvium",
     images: [
       {
-        url: "https://webvium.melvinjonesrepol.com/images/webvium-banner.png",
+        url: "https://www.webvium.com/images/webvium-banner.png",
         width: 1200,
         height: 630,
         alt: "Webvium Software Ecosystem",
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     title: "Webvium - Lightweight Software Built for Speed",
     description:
       "Explore Webvium Browser, Web App, browser extensions, and future projects built around performance and simplicity.",
-    images: ["https://webvium.melvinjonesrepol.com/images/webvium-banner.png"],
+    images: ["https://www.webvium.com/images/webvium-banner.png"],
     creator: "@mrepol742",
   },
   icons: {
@@ -117,7 +117,7 @@ export default function RootLayout({
       lang="en"
     >
       <head>
-        <meta name="hostname" content="webvium.melvinjonesrepol.com" />
+        <meta name="hostname" content="www.webvium.com" />
       </head>
       <body className="antialiased min-h-full flex flex-col">
         <Nav />
