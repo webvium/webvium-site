@@ -41,7 +41,7 @@ const social = [
   { label: "GitHub", href: "https://github.com/webvium", icon: faGithub },
   {
     label: "Facebook",
-    href: "https://facebook.com/com.mrepol742.webvium",
+    href: "https://facebook.com/the.webvium.project",
     icon: faFacebook,
   },
   { label: "YouTube", href: "https://youtube.com/@webvium", icon: faYoutube },

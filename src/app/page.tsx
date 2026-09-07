@@ -94,7 +94,7 @@ const timeline = [
   { year: "2026", text: "Webvium Launcher is announced." },
   {
     year: "2026",
-    text: "Webvium acquires www.webvium.com after its previous owner failed to renew it.",
+    text: "Webvium acquires www.webvium.com.",
   },
 ];
 
