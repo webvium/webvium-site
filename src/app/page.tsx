@@ -83,41 +83,62 @@ const features = [
 const timeline = [
   {
     year: "2018",
-    text: "The project starts as WebView, a browser built to learn Android.",
+    text: "The open-source project begins as an experiment to learn programming, understand how web browsers work, and explore how applications interact with and handle data.",
   },
   {
     year: "2019",
-    text: "Rewritten and rebranded to Webvium, with a clear goal: light and fast.",
+    text: "The project had grown complex, relying heavily on AppCompat and other dependencies. I decided to rewrite it from scratch and named the new browser Webvium.",
   },
-  { year: "2023", text: "Web App launches for website to app conversion." },
-  { year: "2025", text: "The browser extension ecosystem is announced." },
-  { year: "2026", text: "Webvium Launcher is announced." },
+  {
+    year: "2020",
+    text: "Webvium's source code was made private and the project was migrated to Android Studio and Gradle. Development had previously been done entirely on mobile for two years using an APK builder.",
+  },
+  {
+    year: "2021",
+    text: "Webvium was uploaded to the Google Play Store with the help of someone from the community, but was quickly removed after the published version became outdated. Webvium was also released on Uptodown, the Samsung Galaxy Store, and the Amazon Appstore.",
+  },
+  {
+    year: "2022",
+    text: "Webvium underwent a major rewrite to support the latest Android SDK. Some features were removed, while others were improved or replaced with new functionality.",
+  },
+  {
+    year: "2023",
+    text: "Webvium VPN was launched as an experimental service, but the service was discontinued after about a year.",
+  },
+  {
+    year: "2024",
+    text: "Webvium Search was launched and became the default homepage for the browser.",
+  },
+  {
+    year: "2025",
+    text: "The Webvium browser extension ecosystem was announced, expanding the project's vision beyond the Android browser.",
+  },
   {
     year: "2026",
-    text: "Webvium acquires www.webvium.com.",
+    text: "Webvium Search was sunset in favor of a native homepage experience, and the Webvium.com domain was acquired to establish a dedicated home for the project.",
   },
 ];
 
 const principles = [
   {
-    title: "Small by default",
+    title: "No dependencies",
     description:
-      "Every feature is weighed against the cost it adds. If it does not earn its size, it does not ship.",
+      "Webvium is built without relying on third-party libraries or unnecessary frameworks. Every component is kept lean, intentional, and under control.",
   },
   {
-    title: "No accounts, no tracking",
+    title: "Privacy by default",
     description:
-      "Webvium works the moment you open it. There is nothing to sign up for and no activity to collect.",
+      "Webvium does not require an account and is designed to minimize data collection. Your browsing activity stays yours.",
   },
   {
-    title: "Built in the open",
+    title: "Modern security",
     description:
-      "The extensions and several tools are public on GitHub, so you can read exactly what runs on your device.",
+      "Webvium follows modern Android security practices and uses up-to-date security mechanisms to keep browsing and application data protected.",
   },
   {
-    title: "One person, long term",
+    title: "Material Design",
     description:
-      "Webvium is developed independently, at a steady pace, without pressure to chase trends or investors.",
+      "Webvium follows Material Design principles to provide a clean, familiar, and consistent interface across the Android experience.",
   },
 ];
 
@@ -170,7 +191,7 @@ const community = [
   {
     label: "Facebook",
     description: "Announcements and discussion.",
-    href: "https://facebook.com/com.mrepol742.webvium",
+    href: "https://facebook.com/the.webvium.project",
     icon: faFacebook,
   },
 ];

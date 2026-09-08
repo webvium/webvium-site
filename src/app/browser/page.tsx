@@ -61,15 +61,26 @@ const features = [
 
 const resources = [
   { label: "Introducing Webvium Browser for Android Devices", href: "#" },
-  { label: "Download Webvium Browser on Uptodown", href: "#" },
+  {
+    label: "Download Webvium Browser on Uptodown",
+    href: "https://webvium.en.uptodown.com/android",
+  },
   { label: "Follow Us on GitHub", href: "https://github.com/webvium" },
   {
+    label: "Follow Us on Facebook",
+    href: "https://facebook.com/the.webvium.project",
+  },
+  {
+    label: "Follow Us on Youtube",
+    href: "https://youtube.com/@webvium",
+  },
+  {
     label: "Privacy Policy",
-    href: "https://www.webvium.com/legal/privacy-policy",
+    href: "https://www.melvinjonesrepol.com/legal/privacy-policy",
   },
   {
     label: "Terms of Service",
-    href: "https://www.webvium.com/legal/terms-of-service",
+    href: "https://www.melvinjonesrepol.com/legal/terms-of-service",
   },
 ];
 

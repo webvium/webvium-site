@@ -21,6 +21,7 @@ const columns = [
     title: "Resources",
     links: [
       { label: "Changelog", href: "/changelog" },
+      { label: "Donate", href: "/donate" },
       {
         label: "Privacy Policy",
         href: "https://www.melvinjonesrepol.com/legal/privacy-policy",

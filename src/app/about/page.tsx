@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 const section = "flex min-h-screen flex-col justify-center px-5 py-24";
 const sectionAlt = `${section} bg-surface`;
-const innerClass = "mx-auto w-full max-w-3xl";
+const innerClass = "mx-auto w-full max-w-5xl";
 const eyebrow =
   "flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary before:h-px before:w-8 before:bg-primary";
 

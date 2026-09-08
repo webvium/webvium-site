@@ -18,7 +18,8 @@ const links = [
   { label: "Browser", href: "/browser", index: "01" },
   { label: "Extensions", href: "/#extensions", index: "02" },
   { label: "Downloads", href: "/downloads", index: "03" },
-  { label: "About", href: "/about", index: "04" },
+  { label: "Donate", href: "/donate", index: "04" },
+  { label: "About", href: "/about", index: "05" },
 ];
 
 export default function Nav() {
