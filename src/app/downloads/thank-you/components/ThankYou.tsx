@@ -29,7 +29,7 @@ export default function ThankYou() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const appName = params.get("utm_source") || "webvium-browser";
-    window.location.href = `https://released.melvinjonesrepol.com/android/${appName}.apk`;
+    window.location.href = `https://download.melvinjonesrepol.com/android/${appName}.apk`;
   }, []);
 
   return (
@@ -59,7 +59,7 @@ export default function ThankYou() {
             className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
             <Link
-              href="https://released.melvinjonesrepol.com/android/webvium-browser.apk"
+              href="https://download.melvinjonesrepol.com/android/webvium-browser.apk"
               className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95 sm:w-auto"
             >
               <FontAwesomeIcon icon={faDownload} />
