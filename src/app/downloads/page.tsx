@@ -44,9 +44,13 @@ const downloads: Download[] = [
       "Lightweight Android browser focused on performance and customization.",
     actions: [
       {
+        label: "Join internal test",
+        href: "https://play.google.com/apps/internaltest/4701718548311914963",
+        primary: true,
+      },
+      {
         label: "Download APK",
         href: "/downloads/thank-you?utm_source=webvium-browser&utm_medium=browser_download",
-        primary: true,
       },
       { label: "Learn more", href: "/browser" },
     ],

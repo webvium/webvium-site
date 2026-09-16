@@ -114,7 +114,7 @@ const faqs = [
   {
     question: "Is there a Play Store version?",
     answer:
-      "Webvium Browser is distributed as a direct APK download so updates can ship quickly and independently.",
+      "Webvium Browser is available to everyone through its Google Play internal test. You can also continue to download the APK directly.",
   },
   {
     question: "Does the ad blocker need setup?",
@@ -171,6 +171,37 @@ export default function WebviumBrowser() {
               <FontAwesomeIcon icon={faDownload} />
               Download
             </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-surface px-5 py-12">
+        <div className={innerClass}>
+          <Reveal>
+            <aside
+              className="rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-8"
+              aria-labelledby="play-store-update-title"
+            >
+              <span className={eyebrow}>Internal testing</span>
+              <h2
+                id="play-store-update-title"
+                className="mt-4 text-2xl font-semibold sm:text-3xl"
+              >
+                Help test Webvium on Google Play
+              </h2>
+              <p className="mt-4 max-w-3xl text-muted">
+                Everyone is invited to join the Webvium Browser internal test on
+                Google Play. Your feedback helps us find issues and improve the
+                release before it is available more broadly.
+              </p>
+              <Link
+                href="https://play.google.com/apps/internaltest/4701718548311914963"
+                className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95"
+              >
+                Join the internal test
+                <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+              </Link>
+            </aside>
           </Reveal>
         </div>
       </section>
