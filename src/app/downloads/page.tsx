@@ -4,15 +4,15 @@ import Link from "next/link";
 import Reveal from "@/components/common/Reveal";
 
 export const metadata: Metadata = {
-  title: "Downloads | Webvium",
+  title: "Downloads - Webvium",
   description:
-    "Download Webvium Browser, Web App, and other Webvium projects. Access the latest releases, updates, and software downloads from the Webvium ecosystem.",
+    "Get Webvium Browser through Google Play or Uptodown. Google Play is the primary release channel, with supported third-party stores following its releases.",
   keywords: [
     "Webvium Download",
-    "Webvium Browser APK",
+    "Webvium Browser Google Play",
     "Android Browser Download",
     "Web App Download",
-    "APK Download",
+    "Uptodown Download",
     "Webvium Software",
     "Android Apps",
     "Browser Download",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 interface Download {
   name: string;
-  status: "Active" | "Coming soon" | "Deprecated";
+  status: "Active" | "Testing" | "Coming soon" | "Deprecated";
   description: string;
   actions: { label: string; href: string; primary?: boolean }[];
 }
@@ -39,18 +39,18 @@ interface Download {
 const downloads: Download[] = [
   {
     name: "Webvium Browser",
-    status: "Active",
+    status: "Testing",
     description:
-      "Lightweight Android browser focused on performance and customization.",
+      "Lightweight Android browser currently in testing. Google Play is the primary release channel; Uptodown follows Google Play releases.",
     actions: [
       {
-        label: "Join internal test",
-        href: "https://play.google.com/apps/internaltest/4701718548311914963",
+        label: "Get it on Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.webvium.browser",
         primary: true,
       },
       {
-        label: "Download APK",
-        href: "/downloads/thank-you?utm_source=webvium-browser&utm_medium=browser_download",
+        label: "Get it on Uptodown",
+        href: "https://webvium.en.uptodown.com/android",
       },
       { label: "Learn more", href: "/browser" },
     ],
@@ -74,13 +74,9 @@ const downloads: Download[] = [
       "A modern Android launcher currently under active development.",
     actions: [
       {
-        label: "Pre-release APK",
-        href: "/downloads/thank-you?utm_source=webvium-launcher&utm_medium=launcher_download",
-        primary: true,
-      },
-      {
         label: "View on GitHub",
         href: "https://github.com/webvium/webvium-launcher",
+        primary: true,
       },
     ],
   },
@@ -88,13 +84,8 @@ const downloads: Download[] = [
     name: "Webvium VPN",
     status: "Deprecated",
     description:
-      "A lightweight Android VPN app focused on speed, simplicity, security and privacy.",
-    actions: [
-      {
-        label: "Deprecated APK",
-        href: "/downloads/thank-you?utm_source=webvium-vpn&utm_medium=vpn_download",
-      },
-    ],
+      "A retired Webvium project. It is no longer distributed or supported.",
+    actions: [],
   },
   {
     name: "Webvium Search",
@@ -136,13 +127,29 @@ export default function Downloads() {
             delay={160}
             className="mx-auto mt-6 max-w-md text-base text-muted sm:text-lg"
           >
-            The latest Webvium software and projects, in one place.
+            Webvium Browser is currently in testing and will return to active
+            development very soon.
           </Reveal>
         </div>
       </section>
 
       <section className={sectionAlt}>
         <div className={innerClass}>
+          <Reveal>
+            <aside className="mb-22 rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-8">
+              <span className={eyebrow}>Store distribution</span>
+              <h2 className="mt-4 text-2xl font-semibold sm:text-3xl">
+                Get the current compatible release
+              </h2>
+              <p className="mt-4 max-w-3xl text-muted">
+                Google Play is now Webvium&apos;s primary distribution channel.
+                Uptodown is a supported third-party store and follows Google
+                Play releases. Older releases are not compatible with newer
+                Google Play versions, so please install or update Webvium only
+                through one of the stores below.
+              </p>
+            </aside>
+          </Reveal>
           <Reveal>
             <span className={eyebrow}>Apps</span>
           </Reveal>
@@ -151,7 +158,7 @@ export default function Downloads() {
             delay={60}
             className="mt-5 text-3xl font-semibold sm:text-4xl"
           >
-            Available downloads
+            Apps and projects
           </Reveal>
           <div className="mt-12 grid gap-4 sm:grid-cols-2">
             {downloads.map((item, i) => (

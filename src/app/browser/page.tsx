@@ -107,14 +107,19 @@ const requirements = [
 
 const faqs = [
   {
-    question: "How do I install the APK?",
+    question: "Where can I install Webvium Browser?",
     answer:
-      "Open the downloaded file and follow the Android prompts. You may need to allow installs from your browser or file manager the first time.",
+      "Install Webvium Browser from Google Play or Uptodown. Google Play is the primary release channel, and Uptodown follows the same releases.",
   },
   {
     question: "Is there a Play Store version?",
     answer:
-      "Webvium Browser is available to everyone through its Google Play internal test. You can also continue to download the APK directly.",
+      "Yes. Webvium Browser is distributed through Google Play, with Uptodown as a supported third-party store. There is no email-gated internal test to join.",
+  },
+  {
+    question: "Can I use an older version?",
+    answer:
+      "Older Webvium versions are not compatible with newer Google Play releases. Use Google Play or Uptodown to install the current compatible version.",
   },
   {
     question: "Does the ad blocker need setup?",
@@ -180,27 +185,25 @@ export default function WebviumBrowser() {
           <Reveal>
             <aside
               className="rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-8"
-              aria-labelledby="play-store-update-title"
+              aria-labelledby="testing-update-title"
             >
-              <span className={eyebrow}>Internal testing</span>
+              <span className={eyebrow}>Testing phase</span>
               <h2
-                id="play-store-update-title"
+                id="testing-update-title"
                 className="mt-4 text-2xl font-semibold sm:text-3xl"
               >
-                Help test Webvium on Google Play
+                Webvium is currently in testing
               </h2>
               <p className="mt-4 max-w-3xl text-muted">
-                Everyone is invited to join the Webvium Browser internal test on
-                Google Play. Your feedback helps us find issues and improve the
-                release before it is available more broadly.
+                Webvium will be back in active development very soon. When
+                releases are available, Google Play will be the primary source
+                and Uptodown will follow Google Play releases.
               </p>
-              <Link
-                href="https://play.google.com/apps/internaltest/4701718548311914963"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-contrast transition-transform hover:scale-[1.03] active:scale-95"
-              >
-                Join the internal test
-                <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-              </Link>
+              <p className="mt-4 max-w-3xl text-sm text-muted">
+                Older versions are not compatible with newer Google Play
+                releases. Please use a supported store for future installs and
+                updates.
+              </p>
             </aside>
           </Reveal>
         </div>

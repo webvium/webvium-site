@@ -161,7 +161,7 @@ const faqs = [
   {
     question: "Is Webvium open source?",
     answer:
-      "The browser extensions and several supporting projects are open source on GitHub. Webvium Browser itself is developed independently and distributed as an APK.",
+      "The browser extensions and several supporting projects are open source on GitHub. Webvium Browser itself is developed independently and distributed through Google Play and supported third-party stores.",
   },
   {
     question: "How often is it updated?",

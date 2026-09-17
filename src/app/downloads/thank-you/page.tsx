@@ -2,22 +2,22 @@ import { Metadata } from "next";
 import ThankYou from "./components/ThankYou";
 
 export const metadata: Metadata = {
-  title: "Thank You for Downloading",
+  title: "Store Distribution - Webvium",
   description:
-    "Thank you for downloading Webvium. Learn how to get started, explore release notes, and discover other projects in the Webvium ecosystem.",
+    "Webvium is distributed through Google Play and supported third-party stores. Direct APK downloads are no longer available.",
   robots: {
     index: false,
     follow: true,
   },
   openGraph: {
-    title: "Thank You for Downloading - Webvium",
+    title: "Store Distribution - Webvium",
     description:
-      "Your download is ready. Get started with Webvium and explore additional resources.",
+      "Get Webvium from Google Play or a supported third-party store.",
   },
   twitter: {
-    title: "Thank You for Downloading - Webvium",
+    title: "Store Distribution - Webvium",
     description:
-      "Your Webvium download is ready. Explore installation instructions, updates, and more.",
+      "Get Webvium from Google Play or a supported third-party store.",
   },
 };
 
