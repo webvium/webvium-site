@@ -2,6 +2,12 @@ import Reveal from "@/components/common/Reveal";
 
 const changelog = [
   {
+    version: "4.0.0",
+    date: "September 2026",
+    title: "Google Play Release",
+    description: "Bug fixes, new package name, and a start of something new. Rolling out to Google Play Store. All other releases will follow Play Store.",
+  },
+  {
     version: "3.1.3",
     date: "February 2026",
     title: "Better reporting",
