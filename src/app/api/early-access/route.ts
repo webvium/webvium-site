@@ -3,6 +3,7 @@ import { Redis } from "@upstash/redis";
 import { Resend } from "resend";
 import { createElement } from "react";
 import EarlyAccessConfirmationEmail from "@/emails/EarlyAccessConfirmationEmail";
+import { isDisposableEmail, validateEmail } from "@/lib/email-checker";
 
 export const runtime = "nodejs";
 
@@ -51,6 +52,17 @@ export async function POST(request: Request) {
   if (!emailPattern.test(email) || email.length > 254) {
     return Response.json(
       { error: "Please provide a valid email address." },
+      { status: 400 },
+    );
+  }
+
+  if (!validateEmail(email)) {
+    return Response.json({ error: "Invalid email format." }, { status: 400 });
+  }
+
+  if (await isDisposableEmail(email)) {
+    return Response.json(
+      { error: "Disposable email addresses are not allowed." },
       { status: 400 },
     );
   }
