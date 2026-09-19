@@ -21,7 +21,7 @@ const defaultConsent: ConsentPreferences = {
 };
 
 export default function CookieBanner() {
-  const { updateConsent, bannerOpen, closeBanner } = useConsent();
+  const { consent, updateConsent, bannerOpen, closeBanner } = useConsent();
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
@@ -51,9 +51,9 @@ export default function CookieBanner() {
 
   useEffect(() => {
     if (!bannerOpen) return;
-    setOpen(true);
-    let raf1: number, raf2: number;
-    raf1 = requestAnimationFrame(() => {
+    let raf2: number;
+    const raf1 = requestAnimationFrame(() => {
+      setOpen(true);
       raf2 = requestAnimationFrame(() => setVisible(true));
     });
     return () => {
@@ -89,6 +89,18 @@ export default function CookieBanner() {
     });
   };
 
+  const togglePreferences = () => {
+    if (!showPreferences) {
+      setPreferences(
+        consent
+          ? { ...defaultConsent, ...consent, necessary: true }
+          : defaultConsent,
+      );
+    }
+
+    setShowPreferences((current) => !current);
+  };
+
   if (!open) return null;
 
   return (
@@ -97,7 +109,7 @@ export default function CookieBanner() {
         transition-all duration-400 ease-out
         ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
     >
-      <div className="mx-auto max-w-4xl rounded-2xl border bg-gray-900 text-white p-4 md:p-5 shadow-xl">
+      <div className="mx-auto max-w-4xl rounded-md border border-orange-500/40 bg-stone-950 text-white p-4 md:p-5 shadow-[4px_4px_0_0_rgba(234,88,12,0.5)]">
         <h3 className="font-semibold">Cookie Preferences</h3>
 
         <p className="mt-2 text-sm leading-relaxed">
@@ -120,62 +132,82 @@ export default function CookieBanner() {
         </p>
 
         {showPreferences && (
-          <div className="mt-4 space-y-3 border-t border-gray-700 pt-4">
+          <div className="mt-4 space-y-3 border-t border-stone-700 pt-4">
             <label className="flex items-center justify-between">
               <span>Necessary Cookies</span>
 
-              <input type="checkbox" checked disabled />
+              <span className="relative inline-flex h-6 w-11 cursor-not-allowed items-center">
+                <input
+                  type="checkbox"
+                  checked
+                  disabled
+                  className="peer sr-only"
+                />
+                <span className="h-6 w-11 rounded-full bg-stone-700 transition-colors after:absolute after:left-1 after:top-1 after:h-4 after:w-4 after:rounded-full after:bg-white after:transition-transform peer-checked:bg-orange-600 peer-checked:after:translate-x-5 peer-disabled:opacity-100" />
+              </span>
             </label>
 
-            <label className="flex items-center justify-between">
+            <label className="flex cursor-pointer items-center justify-between">
               <span>Analytics Cookies</span>
 
-              <input
-                type="checkbox"
-                checked={preferences.analytics}
-                onChange={(e) =>
-                  setPreferences({
-                    ...preferences,
-                    analytics: e.target.checked,
-                  })
-                }
-              />
+              <span className="relative inline-flex h-6 w-11 items-center">
+                <input
+                  type="checkbox"
+                  checked={preferences.analytics}
+                  onChange={(e) =>
+                    setPreferences((current) => ({
+                      ...current,
+                      analytics: e.target.checked,
+                    }))
+                  }
+                  className="peer sr-only"
+                />
+                <span className="h-6 w-11 rounded-full bg-stone-700 transition-colors after:absolute after:left-1 after:top-1 after:h-4 after:w-4 after:rounded-full after:bg-white after:transition-transform peer-checked:bg-orange-600 peer-checked:after:translate-x-5 peer-focus-visible:ring-2 peer-focus-visible:ring-orange-500 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-stone-950" />
+              </span>
             </label>
 
-            <label className="flex items-center justify-between">
+            <label className="flex cursor-pointer items-center justify-between">
               <span>Functional Cookies</span>
 
-              <input
-                type="checkbox"
-                checked={preferences.functional}
-                onChange={(e) =>
-                  setPreferences({
-                    ...preferences,
-                    functional: e.target.checked,
-                  })
-                }
-              />
+              <span className="relative inline-flex h-6 w-11 items-center">
+                <input
+                  type="checkbox"
+                  checked={preferences.functional}
+                  onChange={(e) =>
+                    setPreferences((current) => ({
+                      ...current,
+                      functional: e.target.checked,
+                    }))
+                  }
+                  className="peer sr-only"
+                />
+                <span className="h-6 w-11 rounded-full bg-stone-700 transition-colors after:absolute after:left-1 after:top-1 after:h-4 after:w-4 after:rounded-full after:bg-white after:transition-transform peer-checked:bg-orange-600 peer-checked:after:translate-x-5 peer-focus-visible:ring-2 peer-focus-visible:ring-orange-500 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-stone-950" />
+              </span>
             </label>
 
-            <label className="flex items-center justify-between">
+            <label className="flex cursor-pointer items-center justify-between">
               <span>Advertising Cookies</span>
 
-              <input
-                type="checkbox"
-                checked={preferences.advertising}
-                onChange={(e) =>
-                  setPreferences({
-                    ...preferences,
-                    advertising: e.target.checked,
-                  })
-                }
-              />
+              <span className="relative inline-flex h-6 w-11 items-center">
+                <input
+                  type="checkbox"
+                  checked={preferences.advertising}
+                  onChange={(e) =>
+                    setPreferences((current) => ({
+                      ...current,
+                      advertising: e.target.checked,
+                    }))
+                  }
+                  className="peer sr-only"
+                />
+                <span className="h-6 w-11 rounded-full bg-stone-700 transition-colors after:absolute after:left-1 after:top-1 after:h-4 after:w-4 after:rounded-full after:bg-white after:transition-transform peer-checked:bg-orange-600 peer-checked:after:translate-x-5 peer-focus-visible:ring-2 peer-focus-visible:ring-orange-500 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-stone-950" />
+              </span>
             </label>
 
             <button
               type="button"
               onClick={() => saveConsent(preferences)}
-              className="mt-2 rounded-full bg-orange-500 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-orange-600 transition-all transition-duration-300"
+              className="mt-2 rounded-md bg-orange-600 px-4 py-2 text-sm font-medium text-orange-50 hover:bg-orange-500 transition-colors"
             >
               Save Preferences
             </button>
@@ -185,8 +217,8 @@ export default function CookieBanner() {
         <div className="mt-4 flex flex-wrap justify-end gap-2">
           <button
             type="button"
-            onClick={() => setShowPreferences((prev) => !prev)}
-            className="rounded-full border px-4 py-2 text-sm hover:bg-gray-100 transition-all transition-duration-300 hover:text-gray-700"
+            onClick={togglePreferences}
+            className="rounded-md border border-stone-600 px-4 py-2 text-sm hover:border-orange-500 hover:bg-orange-500/10 transition-colors"
           >
             Manage Preferences
           </button>
@@ -194,7 +226,7 @@ export default function CookieBanner() {
           <button
             type="button"
             onClick={rejectOptional}
-            className="rounded-full border px-4 py-2 text-sm hover:bg-gray-100 transition-all transition-duration-300 hover:text-gray-700"
+            className="rounded-md border border-stone-600 px-4 py-2 text-sm hover:border-orange-500 hover:bg-orange-500/10 transition-colors"
           >
             Reject Optional
           </button>
@@ -202,7 +234,7 @@ export default function CookieBanner() {
           <button
             type="button"
             onClick={acceptAll}
-            className="rounded-full bg-orange-500 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-orange-600 transition-all transition-duration-300"
+            className="rounded-md bg-orange-600 px-4 py-2 text-sm font-medium text-orange-50 hover:bg-orange-500 transition-colors"
           >
             Accept All
           </button>
