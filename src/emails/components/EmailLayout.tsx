@@ -36,7 +36,7 @@ export default function EmailLayout({
         style={{
           margin: 0,
           padding: 0,
-          backgroundColor: "#f7f8fa",
+          backgroundColor: "#ffffff",
           color: "#1b1d21",
           fontFamily: "Maven Pro, Arial, sans-serif",
         }}
@@ -47,7 +47,7 @@ export default function EmailLayout({
           cellSpacing="0"
           cellPadding="0"
           border={0}
-          style={{ backgroundColor: "#f7f8fa" }}
+          style={{ backgroundColor: "#ffffff" }}
         >
           <tbody>
             <tr>
@@ -61,7 +61,7 @@ export default function EmailLayout({
                   style={{
                     maxWidth: "600px",
                     border: "1px solid #e4e7ec",
-                    backgroundColor: "#ffffff",
+                    backgroundColor: "#f7f8fa",
                   }}
                 >
                   <tbody>
