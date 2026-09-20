@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Webvium - Lightweight Software Built for Speed",
     description:
-      "Explore Webvium Browser, Web App, browser extensions, and future projects built around performance and simplicity.",
+      "Discover Webvium Browser, Web App, browser extensions, and upcoming projects. Lightweight software focused on performance, privacy, and simplicity.",
     images: ["https://www.webvium.com/images/webvium-banner.png"],
     creator: "@mrepol742",
   },

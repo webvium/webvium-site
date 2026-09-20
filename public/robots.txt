@@ -3,6 +3,5 @@
 User-Agent: *
 Allow: /
 Disallow: /.well-known/assetlinks.json
-Disallow: /downloads/thank-you
 
 Sitemap: https://www.webvium.com/sitemap.xml

@@ -1,11 +1,47 @@
 import Reveal from "@/components/common/Reveal";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Changelog - Webvium",
+  description:
+    "A record of the changes, improvements, and ideas that have shaped Webvium into the browser it is today.",
+  alternates: {
+    canonical: "https://www.webvium.com/changelog",
+  },
+  openGraph: {
+    title: "Changelog - Webvium",
+    description:
+      "A record of the changes, improvements, and ideas that have shaped Webvium into the browser it is today.",
+    url: "https://www.webvium.com/changelog",
+    siteName: "Webvium",
+    images: [
+      {
+        url: "https://www.webvium.com/images/webvium-banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Webvium Software Ecosystem",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Changelog - Webvium",
+    description:
+      "A record of the changes, improvements, and ideas that have shaped Webvium into the browser it is today.",
+    images: ["https://www.webvium.com/images/webvium-banner.png"],
+    creator: "@mrepol742",
+  },
+};
 
 const changelog = [
   {
     version: "4.0.0",
     date: "September 2026",
     title: "Google Play Release",
-    description: "Bug fixes, new package name, and a start of something new. Rolling out to Google Play Store. All other releases will follow Play Store.",
+    description:
+      "Bug fixes, new package name, and a start of something new. Rolling out to Google Play Store. All other releases will follow Play Store.",
   },
   {
     version: "3.1.3",

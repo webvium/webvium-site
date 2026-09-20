@@ -2,30 +2,37 @@ import { Metadata } from "next";
 import Reveal from "@/components/common/Reveal";
 
 export const metadata: Metadata = {
-  title: "About Webvium",
+  title: "About - Webvium",
   description:
     "Learn about Webvium, an independent software ecosystem focused on performance, simplicity, and user control. Discover the story behind Webvium Browser and the philosophy that drives its development.",
-  keywords: [
-    "About Webvium",
-    "Webvium",
-    "Webvium Browser",
-    "Melvin Jones Repol",
-    "Android Browser",
-    "Independent Software",
-    "Software Development",
-    "Open Web",
-    "Performance",
-    "Privacy",
-  ],
+  alternates: {
+    canonical: "https://www.webvium.com/about",
+  },
   openGraph: {
-    title: "About Webvium",
+    title: "About - Webvium",
     description:
-      "Discover the story behind Webvium Browser and the mission to build lightweight software that stays fast and practical.",
+      "Learn about Webvium, an independent software ecosystem focused on performance, simplicity, and user control. Discover the story behind Webvium Browser and the philosophy that drives its development.",
+
+    url: "https://www.webvium.com/about",
+    siteName: "Webvium",
+    images: [
+      {
+        url: "https://www.webvium.com/images/webvium-banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Webvium Software Ecosystem",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    title: "About Webvium",
+    card: "summary_large_image",
+    title: "About - Webvium",
     description:
-      "Learn more about Webvium, its philosophy, projects, and commitment to building efficient software.",
+      "Learn about Webvium, an independent software ecosystem focused on performance, simplicity, and user control. Discover the story behind Webvium Browser and the philosophy that drives its development.",
+    images: ["https://www.webvium.com/images/webvium-banner.png"],
+    creator: "@mrepol742",
   },
 };
 

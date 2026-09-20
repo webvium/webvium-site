@@ -13,6 +13,38 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/common/Reveal";
 import Accordion from "@/components/ui/Accordion";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Browser - Webvium",
+  description: "A fast, private browser for Android",
+  alternates: {
+    canonical: "https://www.webvium.com/browser",
+  },
+  openGraph: {
+    title: "Browser - Webvium",
+    description: "A fast, private browser for Android.",
+    url: "https://www.webvium.com/browser",
+    siteName: "Webvium",
+    images: [
+      {
+        url: "https://www.webvium.com/images/webvium-banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Webvium Software Ecosystem",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Browser - Webvium",
+    description: "A fast, private browser for Android.",
+    images: ["https://www.webvium.com/images/webvium-banner.png"],
+    creator: "@mrepol742",
+  },
+};
 
 const features = [
   {
