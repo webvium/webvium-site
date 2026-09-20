@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Code_Pro, Maven_Pro } from "next/font/google";
+import { Maven_Pro, Sora } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
@@ -14,13 +14,6 @@ import CookieBanner from "@/components/common/PrivacyPolicyPrompt";
 
 config.autoAddCss = false;
 
-const sourceCodePro = Source_Code_Pro({
-  subsets: ["latin"],
-  weight: ["400"],
-  display: "swap",
-  variable: "--font-heading",
-});
-
 const mavenPro = Maven_Pro({
   subsets: ["latin"],
   weight: ["400"],
@@ -28,7 +21,12 @@ const mavenPro = Maven_Pro({
   variable: "--font-body",
 });
 
-export const revalidate = 43200; // 12 hours (in seconds)
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-heading",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.webvium.com"),
@@ -116,9 +114,9 @@ export default function RootLayout({
 
   return (
     <html
-      className={`${sourceCodePro.variable} ${mavenPro.variable}`}
-      data-scroll-behavior="smooth"
       lang="en"
+      className={`${mavenPro.variable} ${sora.variable}`}
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <head>

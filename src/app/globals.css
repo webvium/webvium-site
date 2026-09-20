@@ -3,116 +3,115 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-    --background: #f7f8fa;
-    --surface: #ffffff;
-    --surface-2: #eef0f4;
-    --foreground: #1b1d21;
-    --muted: #5b616e;
-    --border: #e4e7ec;
-    --primary: #1a73e8;
-    --primary-soft: rgba(26, 115, 232, 0.1);
-    --primary-contrast: #ffffff;
-    --dot: rgba(27, 29, 33, 0.06);
-    --shadow:
-        0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.04);
+  --background: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #eef0f4;
+  --foreground: #1b1d21;
+  --muted: #5b616e;
+  --border: #e4e7ec;
+  --primary: #1a73e8;
+  --primary-soft: rgba(26, 115, 232, 0.1);
+  --primary-contrast: #ffffff;
+  --dot: rgba(27, 29, 33, 0.06);
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.04);
 }
 
 .dark {
-    --background: #101216;
-    --surface: #171a1f;
-    --surface-2: #1e222a;
-    --foreground: #e7e9ee;
-    --muted: #969ca9;
-    --border: #262b34;
-    --primary: #8ab4f8;
-    --primary-soft: rgba(138, 180, 248, 0.12);
-    --primary-contrast: #101216;
-    --dot: rgba(255, 255, 255, 0.05);
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.28);
+  --background: #101216;
+  --surface: #171a1f;
+  --surface-2: #1e222a;
+  --foreground: #e7e9ee;
+  --muted: #969ca9;
+  --border: #262b34;
+  --primary: #8ab4f8;
+  --primary-soft: rgba(138, 180, 248, 0.12);
+  --primary-contrast: #101216;
+  --dot: rgba(255, 255, 255, 0.05);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
 @theme inline {
-    --color-background: var(--background);
-    --color-surface: var(--surface);
-    --color-surface-2: var(--surface-2);
-    --color-foreground: var(--foreground);
-    --color-muted: var(--muted);
-    --color-border: var(--border);
-    --color-primary: var(--primary);
-    --color-primary-soft: var(--primary-soft);
-    --color-primary-contrast: var(--primary-contrast);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-contrast: var(--primary-contrast);
 
-    --font-heading: var(--font-heading);
-    --font-body: var(--font-body);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
 
-    --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-    --animate-fade-in: fade-in 0.7s ease both;
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.7s ease both;
 }
 
 @keyframes fade-up {
-    from {
-        opacity: 0;
-        transform: translateY(24px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes marquee {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 ::selection {
-    background-color: var(--primary);
-    color: var(--primary-contrast);
+  background-color: var(--primary);
+  color: var(--primary-contrast);
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 999px;
+  background: var(--border);
+  border-radius: 999px;
 }
 
 * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-body);
-    transition:
-        background-color 0.3s ease,
-        color 0.3s ease;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
 }
 
 h1,
@@ -121,69 +120,68 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--font-heading);
-    letter-spacing: -0.03em;
+  font-family: var(--font-heading);
 }
 
 @utility card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 1rem;
-    box-shadow: var(--shadow);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
 }
 
 @utility dot-grid {
-    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
-    background-size: 22px 22px;
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
 @utility marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marquee 40s linear infinite;
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
 }
 
 .marquee-mask {
-    -webkit-mask-image: linear-gradient(
-        to right,
-        transparent,
-        #000 12%,
-        #000 88%,
-        transparent
-    );
-    mask-image: linear-gradient(
-        to right,
-        transparent,
-        #000 12%,
-        #000 88%,
-        transparent
-    );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
 }
 
 .marquee-mask:hover .marquee-track {
-    animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 .reveal {
-    opacity: 0;
+  opacity: 0;
 }
 
 .reveal.is-visible {
-    animation: var(--animate-fade-up);
+  animation: var(--animate-fade-up);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
+  html {
+    scroll-behavior: auto;
+  }
 
-    .reveal,
-    .reveal.is-visible {
-        opacity: 1;
-        animation: none;
-    }
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    animation: none;
+  }
 
-    .marquee-track {
-        animation: none;
-    }
+  .marquee-track {
+    animation: none;
+  }
 }
